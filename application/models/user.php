@@ -25,11 +25,8 @@ class User extends CI_Model {
       $values = array($data['email'], $data['password']);
       $this->db->query($query, $values);
       $this->session->set_flashdata('registration_status', 'You have registered successfully!');
-
     } else {
-      $this->session->test = 'bad';
       $this->session->set_flashdata('registration_error', validation_errors());
-
     }
   }
 
@@ -37,7 +34,6 @@ class User extends CI_Model {
     $query = "UPDATE users SET first_name = ?, last_name = ?, email = ? WHERE id = ?";
     $this->db->query($query, $values);
   }
-
 
 }
 

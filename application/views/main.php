@@ -31,44 +31,40 @@
               value="admin123" required/>
             </div>
           </div>
-
           <input type="submit" value="Log In" class="btn btn-primary"/>
         </form>
       </div>
     </div>
 
-      <hr>
+    <hr>
 
+    <div class="row">
+      <div class="col-sm-10 offset-sm-1 col-md-8 offset-md-2 col-lg-8 offset-lg-2">
+        <form action="/users/register" method="post" id="registrationForm">
+          <span class="warning_message"><?php echo $this->session->flashdata('registration_error')?></span>
 
-      <div class="row">
-        <div class="col-sm-10 offset-sm-1 col-md-8 offset-md-2 col-lg-8 offset-lg-2">
-          <form action="/users/register" method="post" id="registrationForm">
-            <span class="warning_message"><?php echo $this->session->flashdata('registration_error')?></span>
+          <p><?php echo $this->session->flashdata('registration_status')?></p>
 
-            <p><?php echo $this->session->flashdata('registration_status')?></p>
+          <div class="form-row">
 
-            <div class="form-row">
-
-              <div class="form-group col-sm-6 col-md-6">
-                <label for="email">Email</label>
-                <input id="email" name="email"
-                class="form-control" type="email" placeholder="email"
-                value="test@email.com"/>
-              </div>
-              <div class="form-group col-sm-6 col-md-6">
-                <label for="password">Password</label>
-                <input id="password" name="password"
-                class="form-control" type="text" placeholder="Password"
-                value="admin123"/>
-              </div>
+            <div class="form-group col-sm-6 col-md-6">
+              <label for="email">Email</label>
+              <input id="email" name="email"
+              class="form-control" type="email" placeholder="email"
+              value="test@email.com"/>
+            </div>
+            <div class="form-group col-sm-6 col-md-6">
+              <label for="password">Password</label>
+              <input id="password" name="password"
+              class="form-control" type="text" placeholder="Password"
+              value="admin123"/>
+            </div>
             <input type="submit" value="Sign Up" class="btn btn-success"/>
           </div>
-
-          </div>
-
-        </div>
+        </form>
+      </div>
     </div>
+  </div>
   </body>
-
 
 </html>
