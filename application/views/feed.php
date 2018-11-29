@@ -14,6 +14,9 @@
         ?>
     <body>
 
+      <?php
+      var_dump($this->session->all_userdata());
+      ?>
       <div class="container">
         <div class="row">
           <div class="col-sm-8 offset-sm-2 col-md-8 offset-md-2 col-lg-8 offset-lg-2 ">
@@ -36,9 +39,37 @@
               ?>
 
               <div class="col-sm-8 offset-sm-2 col-md-8 offset-md-2 col-lg-8 offset-lg-2 post">
+                <?php
+                if ($this->session->post_edit_id === NULL or $this->session->post_edit_id !== $post['id']) {
+                ?>
                 <?= $post['content'] ?>
-                <hr />
                 <p>Uploader: <?= $post['first_name']?></p>
+                <?php
+                if ($this->session->user['id'] == $post['user_id']) {
+                  ?>
+                  <form action="/posts/toggle_edit_post" method="post">
+                    <input type='hidden' name='post_id' value=<?=$post['id']?>>
+                    <input type='submit' value='Edit' />
+                  </form>
+
+                  <?php
+                }
+                ?>
+                <hr>
+                <?php
+              }
+                else {
+                  ?>
+                  <form action="/posts/submit_edit_post" method='post'>
+                    <textarea name="edited_content_post"><?=$post['content']?></textarea>
+                    <input type='submit' value='submit' />
+                  </form>
+                  <p>Uploader: <?= $post['first_name']?></p>
+                  <hr>
+                  <?php
+                }
+                ?>
+
 
               </div>
 

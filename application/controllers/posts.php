@@ -8,13 +8,6 @@ class Posts extends CI_Controller {
     $this->load->view('feed', ['all' => $all]);
   }
 
-  public function upvote() {
-    $id = $this->input->post('id');
-    $this->load->model('post');
-    $this->post->upvote($id);
-    redirect('/posts');
-  }
-
   public function add() {
     $this->output->enable_profiler(TRUE);
     $data = $this->input->post(null, TRUE);
@@ -22,6 +15,24 @@ class Posts extends CI_Controller {
     $this->post->add_post($data);
     redirect('/posts');
   }
+
+  public function toggle_edit_post() {
+    $this->session->post_edit_id = $this->input->post('post_id', TRUE);
+    redirect('/posts');
+  }
+
+  public function submit_edit_post() {
+    $content = $this->input->post('edited_content_post', TRUE);
+    $values = array(
+      'content' => $content,
+      'id' => $this->session->post_edit_id
+    );
+    $this->load->model('post');
+    $this->post->update_post($values);
+    $this->session->post_edit_id = NULL;
+    redirect('/posts');
+  }
+
 }
 
 ?>
