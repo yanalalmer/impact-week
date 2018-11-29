@@ -4,7 +4,7 @@ class User extends CI_Model {
 
   public function get_one($email) {
     // $data is expected to hold email and password.
-    return $this->db->query("SELECT * FROM users WHERE email = ?", $email)->row_array();
+    return $this->db->query("SELECT users.id, first_name, last_name, email, city, password FROM users LEFT JOIN cities ON users.city_id=cities.id WHERE email = ?", $email)->row_array();
   }
 
   public function register($data) {
@@ -26,6 +26,11 @@ class User extends CI_Model {
       $this->session->set_flashdata('registration_error', validation_errors());
 
     }
+  }
+
+  public function update_profile($values) {
+    $query = "UPDATE users SET first_name = ?, last_name = ?, email = ? WHERE id = ?";
+    $this->db->query($query, $values);
   }
 
 

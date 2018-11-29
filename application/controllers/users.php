@@ -39,5 +39,29 @@ class Users extends CI_Controller {
     redirect('/');
   }
 
+  public function profile() {
+    $this->load->model('user');
+    $email = $this->session->user['email'];
+    $user_info = $this->user->get_one($email);
+    $this->session->user = $user_info;
+    $this->load->view('profile');
+  }
+
+  public function edit_profile() {
+    if(!$this->input->post('submit_profile_edit')) {
+      $this->load->view('profile_edit');
+    } else {
+      $values = array(
+        'first_name' => $this->input->post('first_name', TRUE),
+        'last_name' => $this->input->post('last_name', TRUE),
+        'email' => $this->input->post('email', TRUE),
+        'id' => $this->session->user['id']
+      );
+      $this->load->model('user');
+      $this->user->update_profile($values);
+      redirect('/users/profile');
+    }
+  }
+
 }
 ?>

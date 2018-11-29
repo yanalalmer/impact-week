@@ -17,7 +17,6 @@
         <form action="/users/login" method="post">
           <h4>Female Ventures</h4>
           <p class="warning_message"><?php echo $this->session->flashdata('login_error') ?></p>
-
           <div class="form-row">
             <div class="form-group col-sm-6 col-md-6">
               <label for="login_email">Email</label>
