@@ -20,7 +20,7 @@
       <div class="container">
         <div class="row">
           <div class="col-sm-8 offset-sm-2 col-md-8 offset-md-2 col-lg-8 offset-lg-2 ">
-            <a href="/users/profile">Your profile</a>
+            <a href=<?="/users/profile/".$this->session->user['id']?>>Your profile</a>
             <form action="/users/log_out" method="post">
               <input type="submit" value="Log out" class="btn btn-danger"/>
             </form>

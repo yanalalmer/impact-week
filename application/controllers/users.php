@@ -11,7 +11,7 @@ class Users extends CI_Controller {
     $email = $this->input->post('login_email', TRUE);
     $password = $this->input->post('login_password', TRUE);
     $this->load->model('user');
-    $user_info = $this->user->get_one($email);
+    $user_info = $this->user->get_user_by_email($email);
     $this->session->user = $user_info;
 
     if ($user_info && password_verify($password, $user_info['password'])) {
@@ -39,10 +39,9 @@ class Users extends CI_Controller {
     redirect('/');
   }
 
-  public function profile() {
+  public function profile($id) {
     $this->load->model('user');
-    $email = $this->session->user['email'];
-    $user_info = $this->user->get_one($email);
+    $user_info = $this->user->get_user_by_id($id);
     $this->session->user = $user_info;
     $this->load->view('profile');
   }
