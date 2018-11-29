@@ -62,6 +62,5 @@ class Users extends CI_Controller {
       redirect('/users/profile');
     }
   }
-
 }
 ?>
