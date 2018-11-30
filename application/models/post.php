@@ -21,5 +21,9 @@ class Post extends CI_Model {
     $this->db->query($query, $values);
   }
 
+  public function delete_post($id) {
+    $query = "DELETE FROM posts WHERE id = ?";
+    $this->db->query($query, array($id));
+  }
 }
 ?>
