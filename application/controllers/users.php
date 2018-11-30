@@ -42,7 +42,8 @@ class Users extends CI_Controller {
 
   public function edit_profile() {
     if(!$this->input->post('submit_profile_edit')) {
-      $this->load->view('profile_edit');
+      $this->session->profile_edit_status = TRUE;
+      redirect('/users/profile/'.$this->session->user['id']);
     } else {
       $values = array(
         'first_name' => $this->input->post('first_name', TRUE),
@@ -51,6 +52,7 @@ class Users extends CI_Controller {
         'id' => $this->session->user['id']
       );
       $this->user->update_profile($values);
+      $this->session->unset_userdata('profile_edit_status');
       redirect('/users/profile/'.$this->session->user['id']);
     }
   }
