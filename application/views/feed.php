@@ -56,6 +56,10 @@
                   <input type='hidden' name='post_id' value=<?=$post['id']?>>
                   <input type='submit' value='Edit' />
                 </form>
+                <form action="/posts/delete_post" method="post">
+                  <input type='hidden' name='post_id' value=<?=$post['id']?>>
+                  <input type='submit' value='Delete' />
+                </form>
                 <?php
               }
             ?>

@@ -33,6 +33,12 @@ class Posts extends CI_Controller {
     redirect('/posts');
   }
 
+  public function delete_post() {
+    $id = $this->input->post('post_id');
+    $this->post->delete_post($id);
+    redirect('/posts');
+  }
+
 }
 
 ?>
