@@ -5,7 +5,9 @@
     <title>Edit your profile</title>
   </head>
   <body>
-
+    <?php
+    var_dump($this->session->all_userdata());
+      ?>
     <form action="/users/edit_profile" method="post">
       <label>First Name</label>
       <input type='text' name='first_name' value=<?=$this->session->user['first_name']?>>

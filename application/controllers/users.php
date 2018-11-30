@@ -35,7 +35,6 @@ class Users extends CI_Controller {
     $this->load->view('feed');
   }
 
-
   public function profile($id) {
     $this->session->user = $this->user->get_user_by_id($id);
     $this->load->view('profile');
@@ -52,7 +51,7 @@ class Users extends CI_Controller {
         'id' => $this->session->user['id']
       );
       $this->user->update_profile($values);
-      redirect('/users/profile');
+      redirect('/users/profile/'.$this->session->user['id']);
     }
   }
 }

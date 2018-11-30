@@ -31,7 +31,7 @@ class User extends CI_Model {
   }
 
   public function update_profile($values) {
-    $query = "UPDATE users SET first_name = ?, last_name = ?, email = ? WHERE id = ?";
+    $query = "UPDATE users SET first_name = ?, last_name = ?, email = ?, updated_at = NOW() WHERE id = ?";
     $this->db->query($query, $values);
   }
 
