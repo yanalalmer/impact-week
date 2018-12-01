@@ -16,7 +16,15 @@
   </head>
   <body>
 
+    <h4>User's posts</h4>
+    <?php
+    // var_dump($posts);
+    foreach($posts as $post) {
+      echo "<h6>{$post['title']}</h6>";
+    }
 
+     ?>
+     <hr />
     <?php
     if ($this->session->profile_edit_status == FALSE ) {
       ?>
