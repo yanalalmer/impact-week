@@ -37,9 +37,10 @@ class Users extends CI_Controller {
 
   public function profile($id) {
     $posts = $this->post->get_posts_by_user($id);
-    $this->session->user = $this->user->get_user_by_id($id);
+    $user = $this->user->get_user_by_id($id);
     $this->load->view('profile', array(
-      'posts' => $posts
+      'posts' => $posts,
+      'user' => $user
     ));
   }
 
