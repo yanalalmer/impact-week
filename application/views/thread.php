@@ -7,9 +7,7 @@
   <body>
 
     <?php
-    var_dump($post);
-
-    var_dump($comments);
+    var_dump($this->session->all_userdata());
     ?>
 
     <?php
@@ -54,12 +52,14 @@
     <?php
     // ----- DISPLAY ALL COMMENTS -----
     foreach ($comments as $comment) {
-
-      echo $comment['content'];
       ?>
-      <p>Uploader: <?=$comment['name']?></p>
 
       <?php
+      if ($this->session->comment_edit_id === NULL or $this->session->comment_edit_id !== $comment['id']) {
+        echo $comment['content'];
+        ?>
+        <p>Uploader: <?=$comment['name']?></p>
+        <?php
       // -----ALLOW LOGGED IN USER TO EDIT/DELETE HIS COMMENTS-----
         if ($this->session->user['id'] == $comment['user_id']) {
           ?>
@@ -75,8 +75,24 @@
           </form>
           <?php
         }
+        ?>
+        <hr>
+
+        <?php
+      } //-----END OF TOGGLE EDIT-----
+      else
+      {
+        ?>
+        <form action="/comments/submit_edit_comment" method='post'>
+          <textarea name="edited_content_comment"><?=$comment['content']?></textarea>
+          <input type='hidden' name='post_id' value=<?=$post['id']?>>
+          <input type='submit' value='submit' />
+        </form>
+        <p>Uploader: <?= $comment['name']?></p>
+        <hr>
+        <?php
+      }
       ?>
-      <hr>
 
     <?php
   } //-----END OF PRINTING COMMENTS

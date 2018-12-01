@@ -19,5 +19,21 @@ class Comments extends CI_Controller {
     redirect('/thread/'.$post_id);
   }
 
+  public function toggle_edit_comment() {
+    $this->session->comment_edit_id = $this->input->post('comment_id');
+    $post_id = $this->input->post('post_id', NULL);
+    redirect('/thread/'.$post_id);
+  }
 
+  public function submit_edit_comment() {
+    $content = $this->input->post('edited_content_comment', NULL);
+    $values = array(
+      'content' => $content,
+      'id' => $this->session->comment_edit_id
+    );
+    $this->comment->update_comment($values);
+    $this->session->comment_edit_id = NULL;
+    $post_id = $this->input->post('post_id', TRUE);
+    redirect('/thread/'.$post_id);
+  }
 }

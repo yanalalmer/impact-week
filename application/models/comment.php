@@ -18,6 +18,10 @@ class Comment extends CI_Model {
     $this->db->query($query, array($id));
   }
 
+  public function update_comment($values) {
+    $query = 'UPDATE comments SET content = ? WHERE id = ?';
+    $this->db->query($query, $values);
+  }
 
 }
 
