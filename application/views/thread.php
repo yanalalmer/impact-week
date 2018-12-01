@@ -13,7 +13,7 @@
     ?>
 
     <?php
-    // Display the post
+    // -----Display the post-----
     if ($this->session->post_edit_id === NULL or $this->session->post_edit_id !== $post['id']) {
     ?>
     <?= $post['content'] ?>
@@ -47,7 +47,38 @@
     <?php
     }
     ?>
+    <p>
+      COMMENTS:
+    </p>
+    <?php
+    // ----- display the comments
+    foreach ($comments as $comment) {
 
+      echo $comment['content'];
+      ?>
+      <p>Uploader: <?=$comment['name']?></p>
+
+      <?php
+        if ($this->session->user['id'] == $comment['user_id']) {
+          ?>
+          <form action="/comments/toggle_edit_comment" method="post">
+            <input type='hidden' name='comment_id' value=<?=$comment['id']?>>
+            <input type='hidden' name='post_id' value=<?=$post['id']?>>
+            <input type='submit' value='Edit' />
+          </form>
+          <form action="/comments/delete_comment" method="post">
+            <input type='hidden' name='comment_id' value=<?=$comment['id']?>>
+            <input type='hidden' name='post_id' value=<?=$post['id']?>>
+            <input type='submit' value='Delete' />
+          </form>
+          <?php
+        }
+      ?>
+      <hr>
+
+    <?php
+  } //-----END OF PRINTING COMMENTS
+    ?>
 
   </body>
 </html>

@@ -12,5 +12,13 @@ class Comments extends CI_Controller {
     ));
   }
 
+  public function delete_comment() {
+    $this->output->enable_profiler(TRUE);
+    $comment_id = $this->input->post('comment_id', TRUE);
+    $this->comment->delete_comment($comment_id);
+    $post_id = $this->input->post('post_id', TRUE);
+    redirect('/thread/'.$post_id);
+  }
+
 
 }
