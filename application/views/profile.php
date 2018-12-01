@@ -18,32 +18,37 @@
 
     <h4>User's posts</h4>
     <?php
-    // var_dump($posts);
     foreach($posts as $post) {
-      echo "<h6>{$post['title']}</h6>";
+      echo "<h6><a href=/thread/".$post['post_id'].">{$post['title']}</a></h6>";
     }
-
      ?>
      <hr />
+
+    <?php
+    if ($this->session->user['id'] == $user['id']) {
+      ?>
+      <a href="/users/edit_profile">Edit your profile</a>
+      <?php
+    }
+    ?>
     <?php
     if ($this->session->profile_edit_status == FALSE ) {
       ?>
-      <a href="/users/edit_profile">Edit your profile</a>
 
       <p>
-        First name: <?=$this->session->user['first_name']?>
+        First name: <?=$user['first_name']?>
       </p>
 
       <p>
-        Last name: <?=$this->session->user['last_name']?>
+        Last name: <?=$user['last_name']?>
       </p>
 
       <p>
-        Email: <?=$this->session->user['email']?>
+        Email: <?=$user['email']?>
       </p>
 
       <p>
-        City: <?=$this->session->user['city']?>
+        City: <?=$user['city']?>
       </p>
     </div>
       <?php
@@ -52,13 +57,13 @@
       ?>
       <form action="/users/edit_profile" method="post">
         <label>First Name</label>
-        <input type='text' name='first_name' value=<?=$this->session->user['first_name']?>>
+        <input type='text' name='first_name' value=<?=$user['first_name']?>>
         <br>
         <label>Last name</label>
-        <input type='text' name='last_name' value=<?=$this->session->user['last_name']?>>
+        <input type='text' name='last_name' value=<?=$user['last_name']?>>
         <br>
         <label>email</label>
-        <input type='email' name='email' value=<?=$this->session->user['email']?>>
+        <input type='email' name='email' value=<?=$user['email']?>>
         <br>
         <!--
         Later: add more fields here.
