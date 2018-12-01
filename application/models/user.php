@@ -16,7 +16,6 @@ class User extends CI_Model {
 
     $this->form_validation->set_data($data);
     $this->form_validation->set_rules('email', 'Email', 'required|trim|valid_email|is_unique[users.email]');
-
     $this->form_validation->set_rules('password', 'Password', 'required|trim|min_length[8]');
 
     if ($this->form_validation->run()) {

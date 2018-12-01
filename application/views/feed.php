@@ -48,7 +48,7 @@
             if ($this->session->post_edit_id === NULL or $this->session->post_edit_id !== $post['id']) {
             ?>
             <?= $post['content'] ?>
-            <p>Uploader: <?= $post['first_name']?></p>
+            <p>Uploader: <?= $post['first_name']?> | <a href=<?='/thread/'.$post['id']?>>comments</a></p>
             <?php
               if ($this->session->user['id'] == $post['user_id']) {
                 ?>

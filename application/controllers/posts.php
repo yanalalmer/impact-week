@@ -18,7 +18,11 @@ class Posts extends CI_Controller {
 
   public function toggle_edit_post() {
     $this->session->post_edit_id = $this->input->post('post_id', TRUE);
-    redirect('/posts');
+    if ($this->input->post('edit_in_thread', NULL)) {
+      redirect('/thread/'.$this->session->post_edit_id);
+    } else {
+      redirect('/posts');
+    }
   }
 
   public function submit_edit_post() {
@@ -29,8 +33,13 @@ class Posts extends CI_Controller {
     );
     $this->load->model('post');
     $this->post->update_post($values);
+    $post_id = $this->session->post_edit_id;
     $this->session->post_edit_id = NULL;
-    redirect('/posts');
+    if ($this->input->post('submit_in_thread', NULL)) {
+      redirect('/thread/'.$post_id);
+    } else {
+      redirect('/posts');
+    }
   }
 
   public function delete_post() {
