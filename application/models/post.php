@@ -3,7 +3,7 @@
 class Post extends CI_Model {
 
   public function get_all_posts() {
-    $query = 'SELECT posts.id, content, CONCAT(first_name, " ", last_name) AS "name", user_id, email, is_pinned
+    $query = 'SELECT posts.id, title, content, CONCAT(first_name, " ", last_name) AS "name", user_id, email, is_pinned
               FROM posts
               JOIN users
               ON posts.user_id = users.id
@@ -12,7 +12,7 @@ class Post extends CI_Model {
   }
 
   public function get_post($post_id) {
-    $query = 'SELECT posts.id, content, CONCAT(first_name, " ", last_name) AS "name", users.id AS "user_id", email, is_pinned
+    $query = 'SELECT posts.id, title, content, CONCAT(first_name, " ", last_name) AS "name", users.id AS "user_id", email, is_pinned
               FROM posts
               JOIN users
               ON posts.user_id = users.id
@@ -20,8 +20,12 @@ class Post extends CI_Model {
     return $this->db->query($query, array($post_id))->row_array();
   }
 
+  public function get_posts_by_user($user_id) {
+    $query = "SELECT posts.id, title, content, ";
+  }
+
   public function add_post($data) {
-    $query = "INSERT INTO posts (content, user_id) VALUES (?, ?)";
+    $query = "INSERT INTO posts (title, content, user_id) VALUES (?, ?, ?)";
     $this->db->query($query, $data);
   }
 

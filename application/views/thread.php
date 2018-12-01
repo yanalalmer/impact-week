@@ -14,6 +14,7 @@
     // -----DISPLAY THE POST-----
     if ($this->session->post_edit_id === NULL or $this->session->post_edit_id !== $post['id']) {
     ?>
+    <?= '<h3>'.$post['title'].'</h3>' ?>
     <?= $post['content'] ?>
     <p>Uploader: <?php if($post['name']) {
       echo $post['name'];
