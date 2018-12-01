@@ -21,7 +21,12 @@ class Post extends CI_Model {
   }
 
   public function get_posts_by_user($user_id) {
-    $query = "SELECT posts.id, title, content, ";
+    $query = 'SELECT posts.id AS "post_id", title, users.id AS "user_id"
+              FROM posts
+              LEFT JOIN users
+              ON posts.user_id = users.id
+              WHERE users.id = ?';
+    return $this->db->query($query, array($user_id))->result_array();
   }
 
   public function add_post($data) {
