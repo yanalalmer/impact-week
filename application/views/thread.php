@@ -97,6 +97,11 @@
     <?php
   } //-----END OF PRINTING COMMENTS
     ?>
+    <form action="/comments/add_comment" method="post">
+      <textarea name="content">Your text here</textarea>
+      <input type='hidden' name='post_id' value=<?=$post['id']?>>
+      <input type='submit' />
+    </form>
 
   </body>
 </html>
