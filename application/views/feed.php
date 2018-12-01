@@ -26,7 +26,8 @@
             <input type="submit" value="Log out" class="btn btn-danger"/>
           </form>
           <form action="/posts/add" method="post">
-            <textarea name="content"></textarea>
+            <input type="text" name='title' placeholder='Enter title here' />
+            <textarea name="content" placeholder="Post text here"></textarea>
             <input type="hidden" value=<?=$this->session->user['id']?> name='id'>
             <input type="submit" value="post" class="btn btn-primary" />
           </form>
@@ -47,6 +48,7 @@
             <?php
             if ($this->session->post_edit_id === NULL or $this->session->post_edit_id !== $post['id']) {
             ?>
+            <?= '<h4>'.$post['title'].'</h4>' ?>
             <?= $post['content'] ?>
             <p>Uploader: <?php if($post['name']) {
               echo $post['name'];

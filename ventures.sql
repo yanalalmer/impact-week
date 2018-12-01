@@ -1,7 +1,7 @@
 #
 # SQL Export
 # Created by Querious (201048)
-# Created: 1 December 2018 at 11:48:12 CET
+# Created: 1 December 2018 at 13:02:44 CET
 # Encoding: Unicode (UTF-8)
 #
 
@@ -38,11 +38,12 @@ CREATE TABLE `users` (
   PRIMARY KEY (`id`),
   KEY `city_id` (`city_id`),
   CONSTRAINT `users_ibfk_1` FOREIGN KEY (`city_id`) REFERENCES `cities` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8;
 
 
 CREATE TABLE `posts` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
+  `title` varchar(255) DEFAULT NULL,
   `content` text,
   `user_id` int(11) DEFAULT '0',
   `created_at` datetime DEFAULT CURRENT_TIMESTAMP,
@@ -52,7 +53,7 @@ CREATE TABLE `posts` (
   PRIMARY KEY (`id`),
   KEY `user_id` (`user_id`),
   CONSTRAINT `posts_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8;
 
 
 CREATE TABLE `comments` (
@@ -67,7 +68,7 @@ CREATE TABLE `comments` (
   KEY `post_id` (`post_id`),
   CONSTRAINT `comments_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`),
   CONSTRAINT `comments_ibfk_2` FOREIGN KEY (`post_id`) REFERENCES `posts` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=26 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=27 DEFAULT CHARSET=utf8;
 
 
 
@@ -100,18 +101,21 @@ INSERT INTO `users` (`id`, `first_name`, `last_name`, `email`, `password`, `city
 	(3,'Jack','O\'Hearts','jack@hearts.com','jack123',2,0,'2018-11-29 16:52:45','2018-11-29 16:52:45'),
 	(8,'Elvis2','Costello','test@email.com','$2y$10$H2l29b450QcFtz2pmfsyquke02kZIewPxYaEO9Pu3d04QVHh9orfO',NULL,0,'2018-11-29 17:08:03','2018-12-01 03:08:59'),
 	(10,'Newer','Account','sample@email.com','$2y$10$wUNC9fGzmaYmtnoORJFl.O5EiKXKJ25PVZCypKt7nS6.Up/DEEqYq',NULL,0,'2018-11-30 01:09:42','2018-11-30 01:23:35'),
-	(11,'Admin','McAdmin','admin@admin.com','$2y$10$ppGIAxu4WC0TD..Jywwg9eMPJA76GkHQptPeT4xikfcaMkuJthJIa',3,1,'2018-11-30 21:09:10','2018-11-30 21:09:10');
+	(11,'Admin','McAdmin','admin@admin.com','$2y$10$ppGIAxu4WC0TD..Jywwg9eMPJA76GkHQptPeT4xikfcaMkuJthJIa',3,1,'2018-11-30 21:09:10','2018-11-30 21:09:10'),
+	(12,NULL,NULL,'no@name.com','$2y$10$9pktjP9vYSG82XN35rlc0OyE5EbnP9OTIDCBEf4E5nzllgkzk4zSm',NULL,0,'2018-12-01 12:23:07','2018-12-01 12:23:07');
 ALTER TABLE `users` ENABLE KEYS;
 UNLOCK TABLES;
 
 
 LOCK TABLES `posts` WRITE;
 ALTER TABLE `posts` DISABLE KEYS;
-INSERT INTO `posts` (`id`, `content`, `user_id`, `created_at`, `updated_at`, `allow_comments`, `is_pinned`) VALUES 
-	(1,'Sample post',1,'2018-11-29 16:54:28','2018-11-29 16:54:28',1,0),
-	(2,'Another sample post',2,'2018-11-29 16:54:36','2018-11-29 16:54:36',1,0),
-	(11,'Test post33',8,'2018-12-01 04:35:25','2018-12-01 04:37:00',1,1),
-	(12,'Hope it works',11,'2018-12-01 04:38:58','2018-12-01 04:38:58',1,0);
+INSERT INTO `posts` (`id`, `title`, `content`, `user_id`, `created_at`, `updated_at`, `allow_comments`, `is_pinned`) VALUES 
+	(1,'title 1','Sample post',1,'2018-11-29 16:54:28','2018-11-29 16:54:28',1,1),
+	(2,'title 2','Another sample post',2,'2018-11-29 16:54:36','2018-11-29 16:54:36',1,0),
+	(11,'title 11','Test post33',8,'2018-12-01 04:35:25','2018-12-01 12:40:08',1,0),
+	(12,'title 12','Hope it works',11,'2018-12-01 04:38:58','2018-12-01 04:38:58',1,0),
+	(13,'title 13','I didn\'t fill out my profile.',12,'2018-12-01 12:23:24','2018-12-01 12:27:48',1,0),
+	(14,'title 14','dsasfdds',12,'2018-12-01 12:27:46','2018-12-01 12:27:46',1,0);
 ALTER TABLE `posts` ENABLE KEYS;
 UNLOCK TABLES;
 
@@ -126,7 +130,8 @@ INSERT INTO `comments` (`id`, `content`, `user_id`, `post_id`, `created_at`, `up
 	(11,'Test test test test tesaaa',8,2,'2018-12-01 02:51:03','2018-12-01 02:51:03'),
 	(20,'Please work',8,11,'2018-12-01 04:35:31','2018-12-01 04:35:31'),
 	(22,'Your text here',11,11,'2018-12-01 04:38:25','2018-12-01 04:38:25'),
-	(23,'Uff.',11,12,'2018-12-01 04:39:04','2018-12-01 04:39:04');
+	(23,'Uff.',11,12,'2018-12-01 04:39:04','2018-12-01 04:39:04'),
+	(26,'Your text here',12,13,'2018-12-01 12:30:09','2018-12-01 12:30:09');
 ALTER TABLE `comments` ENABLE KEYS;
 UNLOCK TABLES;
 
