@@ -46,10 +46,10 @@
         <textarea name="edited_content_post"><?=$post['content']?></textarea>
         <input type='submit' value='submit' name='submit_in_thread' />
       </form>
-      <p>Uploader: <?php if($comment['name']) {
-        echo $comment['name'];
+      <p>Uploader: <?php if($post['name']) {
+        echo $post['name'];
       } else {
-        echo $comment['email'];
+        echo $post['email'];
       }?></p>
       <hr>
     <?php
