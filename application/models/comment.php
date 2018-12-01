@@ -2,7 +2,7 @@
 
 class Comment extends CI_Model {
 
-  // get all comments for a specific post
+  // GET ALL COMMENTS FOR A SPECIFIC POST
   public function get_all_comments($post_id) {
     $query = 'SELECT comments.id, content, CONCAT(first_name, " ", last_name) AS "name", users.id AS "user_id"
               FROM comments

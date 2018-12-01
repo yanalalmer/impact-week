@@ -52,10 +52,9 @@
         <label>email</label>
         <input type='email' name='email' value=<?=$this->session->user['email']?>>
         <br>
-        <!-- <label>City</label>
-        <input type='text' name='city' value=<?=$this->session->user['city']?>> -->
-
-        <br>
+        <!--
+        Later: add more fields here.
+        -->
         <input type='submit' value='Submit' name='submit_profile_edit'>
       </form>
       <?php

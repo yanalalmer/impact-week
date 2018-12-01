@@ -3,7 +3,7 @@
 class Post extends CI_Model {
 
   public function get_all_posts() {
-    $query = 'SELECT posts.id, content, users.first_name, user_id
+    $query = 'SELECT posts.id, content, CONCAT(first_name, " ", last_name) AS "name", user_id
               FROM posts
               JOIN users
               ON posts.user_id = users.id

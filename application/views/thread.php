@@ -19,6 +19,7 @@
     <?= $post['content'] ?>
     <p>Uploader: <?= $post['name']?></p>
     <?php
+    // -----ALLOW LOGGED IN USER TO EDIT/DELETE HIS POSTS-----
       if ($this->session->user['id'] == $post['user_id']) {
         ?>
         <form action="/posts/toggle_edit_post" method="post">
@@ -51,7 +52,7 @@
       COMMENTS:
     </p>
     <?php
-    // ----- display the comments
+    // ----- DISPLAY ALL COMMENTS -----
     foreach ($comments as $comment) {
 
       echo $comment['content'];
@@ -59,6 +60,7 @@
       <p>Uploader: <?=$comment['name']?></p>
 
       <?php
+      // -----ALLOW LOGGED IN USER TO EDIT/DELETE HIS COMMENTS-----
         if ($this->session->user['id'] == $comment['user_id']) {
           ?>
           <form action="/comments/toggle_edit_comment" method="post">
