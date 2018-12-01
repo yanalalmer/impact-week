@@ -46,7 +46,9 @@ class Posts extends CI_Controller {
 
   public function toggle_pin() {
     $post_id = $this->input->post('post_id', TRUE);
-    $this->post->toggle_pin();
+    $is_pinned = $this->input->post('is_pinned', TRUE);
+    $this->post->toggle_pin($post_id, $is_pinned);
+    redirect('/posts');
   }
 
 }

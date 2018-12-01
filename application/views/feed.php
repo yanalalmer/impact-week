@@ -53,6 +53,12 @@
             } else {
               echo $post['email'];
             }?> | <a href=<?='/thread/'.$post['id']?>>comments</a></p>
+            <p>
+              <?php if ($post['is_pinned']) {
+                echo "<strong>PINNED</strong>";
+              }
+              ?>
+            </p>
             <?php
               if ($this->session->user['id'] == $post['user_id'] || $this->session->user['user_type']) {
                 ?>
@@ -67,10 +73,11 @@
                 <?php
               }
 
-              if ($this->session->user['user_type']) {
+              if ($this->session->user['user_type'] == 1) {
                 ?>
                 <form action='/posts/toggle_pin' method='post'>
                   <input type='hidden' name='post_id' value=<?=$post['id']?>>
+                  <input type="hidden" name="is_pinned" value=<?=$post['is_pinned']?>>
                   <input type='submit' value='Pin' />
                 </form>
                 <?php

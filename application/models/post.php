@@ -36,5 +36,15 @@ class Post extends CI_Model {
     $query = "DELETE FROM posts WHERE id = ?";
     $this->db->query($query, array($id));
   }
+
+  public function toggle_pin($post_id, $is_pinned) {
+    if ($is_pinned == 1) {
+      $query = "UPDATE posts SET is_pinned = 0 WHERE id = ?";
+    }
+    else {
+      $query = "UPDATE posts SET is_pinned = 1 WHERE id = ?";
+    }
+    $this->db->query($query, array($post_id));
+  }
 }
 ?>
