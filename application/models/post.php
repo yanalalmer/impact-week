@@ -3,12 +3,21 @@
 class Post extends CI_Model {
 
   public function get_all_posts() {
-    $query = 'SELECT posts.id, content, users.first_name, user_id
+    $query = 'SELECT posts.id, content, CONCAT(first_name, " ", last_name) AS "name", user_id
               FROM posts
               JOIN users
               ON posts.user_id = users.id
               ORDER BY posts.created_at DESC';
     return $this->db->query($query)->result_array();
+  }
+
+  public function get_post($post_id) {
+    $query = 'SELECT posts.id, content, CONCAT(first_name, " ", last_name) AS "name", users.id AS "user_id"
+              FROM posts
+              JOIN users
+              ON posts.user_id = users.id
+              WHERE posts.id = ?';
+    return $this->db->query($query, array($post_id))->row_array();
   }
 
   public function add_post($data) {

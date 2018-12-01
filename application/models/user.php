@@ -3,20 +3,17 @@
 class User extends CI_Model {
 
   public function get_user_by_email($email) {
-    // $data is expected to hold email and password.
     return $this->db->query("SELECT users.id, first_name, last_name, email, city, password FROM users LEFT JOIN cities ON users.city_id=cities.id WHERE email = ?", $email)->row_array();
   }
 
   public function get_user_by_id($id) {
-    // $data is expected to hold email and password.
     return $this->db->query("SELECT users.id, first_name, last_name, email, city, password FROM users LEFT JOIN cities ON users.city_id=cities.id WHERE users.id = ?", $id)->row_array();
   }
 
   public function register($data) {
-
+    // Later: move validation to controller and make it a separate method.
     $this->form_validation->set_data($data);
     $this->form_validation->set_rules('email', 'Email', 'required|trim|valid_email|is_unique[users.email]');
-
     $this->form_validation->set_rules('password', 'Password', 'required|trim|min_length[8]');
 
     if ($this->form_validation->run()) {

@@ -11,7 +11,6 @@ class Users extends CI_Controller {
     $email = $this->input->post('login_email', TRUE);
     $password = $this->input->post('login_password', TRUE);
     $this->session->user = $this->user->get_user_by_email($email);
-
     if ($this->session->user && password_verify($password, $this->session->user['password'])) {
       redirect('/feed');
     } else {
@@ -41,7 +40,7 @@ class Users extends CI_Controller {
   }
 
   public function edit_profile() {
-    if(!$this->input->post('submit_profile_edit')) {
+    if( ! $this->input->post('submit_profile_edit')) {
       $this->session->profile_edit_status = TRUE;
       redirect('/users/profile/'.$this->session->user['id']);
     } else {
