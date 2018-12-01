@@ -50,7 +50,7 @@
             <?= $post['content'] ?>
             <p>Uploader: <?= $post['name']?> | <a href=<?='/thread/'.$post['id']?>>comments</a></p>
             <?php
-              if ($this->session->user['id'] == $post['user_id']) {
+              if ($this->session->user['id'] == $post['user_id'] || $this->session->user['user_type']) {
                 ?>
                 <form action="/posts/toggle_edit_post" method="post">
                   <input type='hidden' name='post_id' value=<?=$post['id']?>>

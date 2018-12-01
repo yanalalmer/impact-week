@@ -3,11 +3,11 @@
 class User extends CI_Model {
 
   public function get_user_by_email($email) {
-    return $this->db->query("SELECT users.id, first_name, last_name, email, city, password FROM users LEFT JOIN cities ON users.city_id=cities.id WHERE email = ?", $email)->row_array();
+    return $this->db->query("SELECT users.id, first_name, last_name, email, city, password, user_type FROM users LEFT JOIN cities ON users.city_id=cities.id WHERE email = ?", $email)->row_array();
   }
 
   public function get_user_by_id($id) {
-    return $this->db->query("SELECT users.id, first_name, last_name, email, city, password FROM users LEFT JOIN cities ON users.city_id=cities.id WHERE users.id = ?", $id)->row_array();
+    return $this->db->query("SELECT users.id, first_name, last_name, email, city, password, user_type FROM users LEFT JOIN cities ON users.city_id=cities.id WHERE users.id = ?", $id)->row_array();
   }
 
   public function register($data) {

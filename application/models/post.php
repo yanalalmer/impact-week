@@ -31,6 +31,8 @@ class Post extends CI_Model {
   }
 
   public function delete_post($id) {
+    $query = "DELETE FROM comments WHERE post_id = ?";
+    $this->db->query($query, array($id));
     $query = "DELETE FROM posts WHERE id = ?";
     $this->db->query($query, array($id));
   }

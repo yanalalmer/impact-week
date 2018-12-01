@@ -18,7 +18,7 @@
     <p>Uploader: <?= $post['name']?></p>
     <?php
     // -----ALLOW LOGGED IN USER TO EDIT/DELETE HIS POSTS-----
-      if ($this->session->user['id'] == $post['user_id']) {
+      if ($this->session->user['id'] == $post['user_id'] || $this->session->user['user_type']) {
         ?>
         <form action="/posts/toggle_edit_post" method="post">
           <input type='hidden' name='post_id' value=<?=$post['id']?>>
@@ -61,7 +61,7 @@
         <p>Uploader: <?=$comment['name']?></p>
         <?php
       // -----ALLOW LOGGED IN USER TO EDIT/DELETE HIS COMMENTS-----
-        if ($this->session->user['id'] == $comment['user_id']) {
+        if ($this->session->user['id'] == $comment['user_id'] || $this->session->user['user_type']) {
           ?>
           <form action="/comments/toggle_edit_comment" method="post">
             <input type='hidden' name='comment_id' value=<?=$comment['id']?>>
@@ -97,6 +97,11 @@
     <?php
   } //-----END OF PRINTING COMMENTS
     ?>
+    <form action="/comments/add_comment" method="post">
+      <textarea name="content">Your text here</textarea>
+      <input type='hidden' name='post_id' value=<?=$post['id']?>>
+      <input type='submit' />
+    </form>
 
   </body>
 </html>

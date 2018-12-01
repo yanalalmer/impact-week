@@ -23,6 +23,11 @@ class Comment extends CI_Model {
     $this->db->query($query, $values);
   }
 
+  public function add($values) {
+    $query = "INSERT INTO comments (content, user_id, post_id) VALUES (?, ?, ?)";
+    $this->db->query($query, $values);
+  }
+
 }
 
 
