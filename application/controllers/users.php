@@ -11,6 +11,7 @@ class Users extends CI_Controller {
     $email = $this->input->post('login_email', TRUE);
     $password = $this->input->post('login_password', TRUE);
     $this->session->user = $this->user->get_user_by_email($email);
+
     if ($this->session->user && password_verify($password, $this->session->user['password'])) {
       redirect('/feed');
     } else {

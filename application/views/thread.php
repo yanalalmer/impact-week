@@ -11,11 +11,15 @@
     ?>
 
     <?php
-    // -----Display the post-----
+    // -----DISPLAY THE POST-----
     if ($this->session->post_edit_id === NULL or $this->session->post_edit_id !== $post['id']) {
     ?>
     <?= $post['content'] ?>
-    <p>Uploader: <?= $post['name']?></p>
+    <p>Uploader: <?php if($post['name']) {
+      echo $post['name'];
+    } else {
+      echo $post['email'];
+    }?></p>
     <?php
     // -----ALLOW LOGGED IN USER TO EDIT/DELETE HIS POSTS-----
       if ($this->session->user['id'] == $post['user_id'] || $this->session->user['user_type']) {
@@ -41,7 +45,11 @@
         <textarea name="edited_content_post"><?=$post['content']?></textarea>
         <input type='submit' value='submit' name='submit_in_thread' />
       </form>
-      <p>Uploader: <?= $post['name']?></p>
+      <p>Uploader: <?php if($comment['name']) {
+        echo $comment['name'];
+      } else {
+        echo $comment['email'];
+      }?></p>
       <hr>
     <?php
     }
@@ -58,7 +66,11 @@
       if ($this->session->comment_edit_id === NULL or $this->session->comment_edit_id !== $comment['id']) {
         echo $comment['content'];
         ?>
-        <p>Uploader: <?=$comment['name']?></p>
+        <p>Uploader: <?php if($comment['name']) {
+          echo $comment['name'];
+        } else {
+          echo $comment['email'];
+        }?></p>
         <?php
       // -----ALLOW LOGGED IN USER TO EDIT/DELETE HIS COMMENTS-----
         if ($this->session->user['id'] == $comment['user_id'] || $this->session->user['user_type']) {
@@ -82,6 +94,7 @@
       } //-----END OF TOGGLE EDIT-----
       else
       {
+        //-----SUBMIT A COMMENT-----
         ?>
         <form action="/comments/submit_edit_comment" method='post'>
           <textarea name="edited_content_comment"><?=$comment['content']?></textarea>

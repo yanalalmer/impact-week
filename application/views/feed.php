@@ -48,7 +48,17 @@
             if ($this->session->post_edit_id === NULL or $this->session->post_edit_id !== $post['id']) {
             ?>
             <?= $post['content'] ?>
-            <p>Uploader: <?= $post['name']?> | <a href=<?='/thread/'.$post['id']?>>comments</a></p>
+            <p>Uploader: <?php if($post['name']) {
+              echo $post['name'];
+            } else {
+              echo $post['email'];
+            }?> | <a href=<?='/thread/'.$post['id']?>>comments</a></p>
+            <p>
+              <?php if ($post['is_pinned']) {
+                echo "<strong>PINNED</strong>";
+              }
+              ?>
+            </p>
             <?php
               if ($this->session->user['id'] == $post['user_id'] || $this->session->user['user_type']) {
                 ?>
@@ -59,6 +69,16 @@
                 <form action="/posts/delete_post" method="post">
                   <input type='hidden' name='post_id' value=<?=$post['id']?>>
                   <input type='submit' value='Delete' />
+                </form>
+                <?php
+              }
+
+              if ($this->session->user['user_type'] == 1) {
+                ?>
+                <form action='/posts/toggle_pin' method='post'>
+                  <input type='hidden' name='post_id' value=<?=$post['id']?>>
+                  <input type="hidden" name="is_pinned" value=<?=$post['is_pinned']?>>
+                  <input type='submit' value='Pin' />
                 </form>
                 <?php
               }
@@ -73,7 +93,11 @@
                 <textarea name="edited_content_post"><?=$post['content']?></textarea>
                 <input type='submit' value='submit' />
               </form>
-              <p>Uploader: <?= $post['name']?></p>
+              <p>Uploader: <?php if($post['name']) {
+                echo $post['name'];
+              } else {
+                echo $post['email'];
+              }?></p>
               <hr>
             <?php
             }
