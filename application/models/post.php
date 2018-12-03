@@ -3,11 +3,20 @@
 class Post extends CI_Model {
 
   public function get_all_posts() {
-    $query = 'SELECT posts.id, title, content, CONCAT(first_name, " ", last_name) AS "name", user_id, email, is_pinned
+    // $query = 'SELECT posts.id, title, content, CONCAT(first_name, " ", last_name) AS "name", user_id, email, is_pinned
+    //           FROM posts
+    //           JOIN users
+    //           ON posts.user_id = users.id
+    //           ORDER BY is_pinned DESC, posts.created_at DESC';
+    $query = 'SELECT posts.id, title, posts.content AS "content", CONCAT(first_name, " ", last_name) AS "name", posts.user_id AS "user_id", email, is_pinned, COUNT(comments.id) AS "comment_count"
               FROM posts
               JOIN users
               ON posts.user_id = users.id
+              LEFT JOIN comments
+              ON posts.id = comments.post_id
+              GROUP BY posts.id
               ORDER BY is_pinned DESC, posts.created_at DESC';
+
     return $this->db->query($query)->result_array();
   }
 

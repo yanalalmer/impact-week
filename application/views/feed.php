@@ -57,7 +57,7 @@
             ?>
             <?= '<h4 class="card-title p-3 mb-5 text-white " style="background-color: #85B3B8">'.$post['title'].'</h4>' ?>
             <h5 clas="text-monospaced"><?= $post['content'] ?></h5><br>
-            <a href="<?='/thread/'.$post['id']?>" class="btn btn-sm">comments</a><br>
+            <a href="<?='/thread/'.$post['id']?>" class="btn btn-sm"><?=$post['comment_count']." " ?>comments</a><br>
             Uploader: <p class="card-text text-info"><?php if($post['name']) {
               echo $post['name'];
             } else {
