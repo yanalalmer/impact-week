@@ -63,13 +63,13 @@ class Users extends CI_Controller {
         'company' => $this->input->post('company', TRUE),
         'industry' => $this->input->post('industry', TRUE),
         'role' => $this->input->post('role', TRUE),
-        'recruitment' => $this->input->post('recruitment', TRUE), 
+        'recruitment' => $this->input->post('recruitment', TRUE),
         'id' => $this->session->user['id'],
 
       );
       $this->user->update_profile($values);
       $this->session->unset_userdata('profile_edit_status');
-      // redirect('/users/profile/'.$this->session->user['id']);
+      redirect('/users/profile/'.$this->session->user['id']);
     }
   }
 }

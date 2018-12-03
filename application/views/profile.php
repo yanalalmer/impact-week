@@ -104,6 +104,8 @@
         <br>
         <label>Bio</label>
         <textarea name='bio'><?=$user['bio']?></textarea>
+        <br />
+        <label>Email</label>
         <input type='email' name='email' value=<?=$user['email']?>>
         <br>
         <label>Education</label>
@@ -121,8 +123,10 @@
         <input type='radio' name='role' value='mentee'>Mentee
 
         <br>
-        <label>Recruitment</label>
-        <input type='text' name='recruitment' value=<?=$user['recruitment']?>>
+        <label>Recruitment:</label>
+        <!-- <input type='text' name='recruitment' value=<?=$user['recruitment']?>> -->
+        <input type='radio' name='recruitment' value='Interested'>Interested
+        <input type='radio' name='recruitment' value='Not interested'>Not interested
         <br>
         <!--
         Later: add more fields here.
