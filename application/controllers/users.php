@@ -87,6 +87,7 @@ class Users extends CI_Controller {
 
     foreach ($friends as $friend) {
       $output .= "<div class='col-sm-12 col-md-4 col-lg-3 text-center' style='border: 1px solid black'>
+        <img src={$friend['picture']} width=100px height=100px/>
         {$friend['first_name']} {$friend['last_name']} <br>
         {$friend['city']} <br>
         {$friend['industry']} <br>

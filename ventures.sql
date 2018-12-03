@@ -1,7 +1,7 @@
 #
 # SQL Export
 # Created by Querious (201048)
-# Created: 3 December 2018 at 23:23:22 CET
+# Created: 4 December 2018 at 00:04:13 CET
 # Encoding: Unicode (UTF-8)
 #
 
@@ -33,6 +33,7 @@ CREATE TABLE `users` (
   `recruitment` varchar(64) DEFAULT NULL,
   `created_at` datetime DEFAULT CURRENT_TIMESTAMP,
   `updated_at` datetime DEFAULT CURRENT_TIMESTAMP,
+  `picture` varchar(255) DEFAULT '''/assets/default.png''',
   PRIMARY KEY (`id`),
   KEY `city_id` (`city`)
 ) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8;
@@ -80,19 +81,19 @@ SET FOREIGN_KEY_CHECKS = 0;
 
 LOCK TABLES `users` WRITE;
 ALTER TABLE `users` DISABLE KEYS;
-INSERT INTO `users` (`id`, `first_name`, `last_name`, `email`, `password`, `city`, `user_type`, `phone`, `birthdate`, `bio`, `education`, `company`, `industry`, `role`, `recruitment`, `created_at`, `updated_at`) VALUES 
-	(1,'John','Doe','john@doe.com','admin123','Amsterdam',0,NULL,NULL,NULL,'Erasmus University','Cisco','Software','Mentor',NULL,'2018-11-29 16:50:13','2018-11-29 16:50:13'),
-	(2,'Jane','Doe','jane@doe.com','jane123','Utrecht',0,NULL,NULL,NULL,'University of Warsaw','Goldman Sachs','Finance','Mentor',NULL,'2018-11-29 16:50:26','2018-11-29 16:50:26'),
-	(3,'Jack','O\'Hearts','jack@hearts.com','jack123','Nijmegen',0,NULL,NULL,NULL,'Bocconi',NULL,'Hardware','Mentee',NULL,'2018-11-29 16:52:45','2018-11-29 16:52:45'),
-	(8,'Elvis','Costello','test@email.com','$2y$10$H2l29b450QcFtz2pmfsyquke02kZIewPxYaEO9Pu3d04QVHh9orfO','Amsterdam',0,'123456789','2000-01-01',NULL,'Utrecht University','companyname','Entertainment','Mentor','Not interested','2018-11-29 17:08:03','2018-12-03 14:12:54'),
-	(10,'Newer','Account','sample@email.com','$2y$10$wUNC9fGzmaYmtnoORJFl.O5EiKXKJ25PVZCypKt7nS6.Up/DEEqYq','Rotterdam',0,NULL,NULL,NULL,'University of Eindhoven',NULL,'Health','Mentee',NULL,'2018-11-30 01:09:42','2018-11-30 01:23:35'),
-	(11,'Admin','McAdmin','admin@admin.com','$2y$10$ppGIAxu4WC0TD..Jywwg9eMPJA76GkHQptPeT4xikfcaMkuJthJIa','Rotterdam',1,'600600600','1990-10-10',NULL,'Delft','Restart','Software','Mentee','Not interested','2018-11-30 21:09:10','2018-12-03 21:34:27'),
-	(12,'I have','no name','no@name.com','$2y$10$9pktjP9vYSG82XN35rlc0OyE5EbnP9OTIDCBEf4E5nzllgkzk4zSm','The Hague',0,NULL,NULL,NULL,NULL,NULL,'Entertainment','Mentor',NULL,'2018-12-01 12:23:07','2018-12-01 12:23:07'),
-	(16,'June','Carter','june@carter.com','admin123','Eindhoven',0,NULL,'1930-01-01',NULL,NULL,NULL,'Entertainment','Mentee',NULL,'2018-12-03 23:11:14','2018-12-03 23:11:14'),
-	(17,'Amy ','McAmy','amy@amy.com','amy1234','Eindhoven',0,'601214536','1950-05-12',NULL,NULL,NULL,'Hardware','Mentor',NULL,'2018-12-03 23:12:28','2018-12-03 23:12:28'),
-	(18,'Britta','O\'Britta','britta@britta.com','britta2334','Rotterdam',0,'503153832','1980-02-13',NULL,'Erasmus University','CiC Rotterdam','Real estate','Mentee','Interested','2018-12-03 23:15:34','2018-12-03 23:15:34'),
-	(19,'Celine','von Celine','celine@celine.com','celine1234','Utrecht',0,'242153958','1953-03-12',NULL,'Eindhoven University','Picnic','Software','Mentor','Interested','2018-12-03 23:21:27','2018-12-03 23:21:27'),
-	(20,'Deborah','de Deborah','deborah@deborah.com','debbie23432','Rotterdam',0,'32342134','1995-12-12',NULL,'Erasmus University','Picnic','Hardware',NULL,'Not interested','2018-12-03 23:22:46','2018-12-03 23:22:46');
+INSERT INTO `users` (`id`, `first_name`, `last_name`, `email`, `password`, `city`, `user_type`, `phone`, `birthdate`, `bio`, `education`, `company`, `industry`, `role`, `recruitment`, `created_at`, `updated_at`, `picture`) VALUES 
+	(1,'John','Doe','john@doe.com','admin123','Amsterdam',0,NULL,NULL,NULL,'Erasmus University','Cisco','Software','Mentor',NULL,'2018-11-29 16:50:13','2018-11-29 16:50:13','/assets/default.png'),
+	(2,'Jane','Doe','jane@doe.com','jane123','Utrecht',0,NULL,NULL,NULL,'University of Warsaw','Goldman Sachs','Finance','Mentor',NULL,'2018-11-29 16:50:26','2018-11-29 16:50:26','/assets/default.png'),
+	(3,'Jack','O\'Hearts','jack@hearts.com','jack123','Nijmegen',0,NULL,NULL,NULL,'Bocconi',NULL,'Hardware','Mentee',NULL,'2018-11-29 16:52:45','2018-11-29 16:52:45','/assets/default.png'),
+	(8,'Elvis','Costello','test@email.com','$2y$10$H2l29b450QcFtz2pmfsyquke02kZIewPxYaEO9Pu3d04QVHh9orfO','Amsterdam',0,'123456789','2000-01-01',NULL,'Utrecht University','companyname','Entertainment','Mentor','Not interested','2018-11-29 17:08:03','2018-12-03 14:12:54','/assets/default.png'),
+	(10,'Newer','Account','sample@email.com','$2y$10$wUNC9fGzmaYmtnoORJFl.O5EiKXKJ25PVZCypKt7nS6.Up/DEEqYq','Rotterdam',0,NULL,NULL,NULL,'University of Eindhoven',NULL,'Health','Mentee',NULL,'2018-11-30 01:09:42','2018-11-30 01:23:35','/assets/default.png'),
+	(11,'Admin','McAdmin','admin@admin.com','$2y$10$ppGIAxu4WC0TD..Jywwg9eMPJA76GkHQptPeT4xikfcaMkuJthJIa','Rotterdam',1,'600600600','1990-10-10',NULL,'Delft','Restart','Software','Mentee','Not interested','2018-11-30 21:09:10','2018-12-03 21:34:27','/assets/default.png'),
+	(12,'I have','no name','no@name.com','$2y$10$9pktjP9vYSG82XN35rlc0OyE5EbnP9OTIDCBEf4E5nzllgkzk4zSm','The Hague',0,NULL,NULL,NULL,NULL,NULL,'Entertainment','Mentor',NULL,'2018-12-01 12:23:07','2018-12-01 12:23:07','/assets/default.png'),
+	(16,'June','Carter','june@carter.com','admin123','Eindhoven',0,NULL,'1930-01-01',NULL,NULL,NULL,'Entertainment','Mentee',NULL,'2018-12-03 23:11:14','2018-12-03 23:11:14','/assets/default.png'),
+	(17,'Amy ','McAmy','amy@amy.com','amy1234','Eindhoven',0,'601214536','1950-05-12',NULL,NULL,NULL,'Hardware','Mentor',NULL,'2018-12-03 23:12:28','2018-12-03 23:12:28','/assets/default.png'),
+	(18,'Britta','O\'Britta','britta@britta.com','britta2334','Rotterdam',0,'503153832','1980-02-13',NULL,'Erasmus University','CiC Rotterdam','Real estate','Mentee','Interested','2018-12-03 23:15:34','2018-12-03 23:15:34','/assets/default.png'),
+	(19,'Celine','von Celine','celine@celine.com','celine1234','Utrecht',0,'242153958','1953-03-12',NULL,'Eindhoven University','Picnic','Software','Mentor','Interested','2018-12-03 23:21:27','2018-12-03 23:21:27','/assets/default.png'),
+	(20,'Deborah','de Deborah','deborah@deborah.com','debbie23432','Rotterdam',0,'32342134','1995-12-12',NULL,'Erasmus University','Picnic','Hardware',NULL,'Not interested','2018-12-03 23:22:46','2018-12-03 23:22:46','/assets/default.png');
 ALTER TABLE `users` ENABLE KEYS;
 UNLOCK TABLES;
 
