@@ -8,6 +8,7 @@
 
     </style>
     <?php
+    var_dump($user);
     if( ! $this->session->user) {
       redirect('/users');
       die();
@@ -50,6 +51,39 @@
       <p>
         City: <?=$user['city']?>
       </p>
+
+      <?php if($user['phone']) {
+        echo "<p>Phone: {$user['phone']}</p>";
+      }
+
+      if($user['birthdate']) {
+        echo "<p>Birthdate: {$user['birthdate']}</p>";
+      }
+
+      if($user['bio']) {
+        echo "<p>Bio: {$user['bio']}</p>";
+      }
+
+      if($user['education']) {
+        echo "Education: <p>{$user['education']}</p>";
+      }
+
+      if($user['company']) {
+        echo "Company: <p>{$user['company']}</p>";
+      }
+
+      if($user['industry']) {
+        echo "Industry: <p>{$user['industry']}</p>";
+      }
+
+      if($user['role']) {
+        echo "Role: <p>{$user['role']}</p>";
+      }
+
+      if($user['recruitment']) {
+        echo "Recruitment: <p>{$user['recruitment']}</p>";
+      }
+      ?>
     </div>
       <?php
     } else
@@ -62,8 +96,33 @@
         <label>Last name</label>
         <input type='text' name='last_name' value=<?=$user['last_name']?>>
         <br>
-        <label>email</label>
+        <label>Phone</label>
+        <input type='text' name='phone' value=<?=$user['phone']?>>
+        <br>
+        <label>Birthdate</label>
+        <input type='date' name='birthdate' value=<?=$user['birthdate']?>>
+        <br>
+        <label>Bio</label>
+        <textarea name='bio'><?=$user['bio']?></textarea>
         <input type='email' name='email' value=<?=$user['email']?>>
+        <br>
+        <label>Education</label>
+        <input type='text' name='education' value=<?=$user['education']?>>
+        <br>
+        <label>Company</label>
+        <input type='text' name='company' value=<?=$user['company']?>>
+        <br>
+        <label>Industry</label>
+        <input type='text' name='industry' value=<?=$user['industry']?>>
+        <br>
+        <label>Role:</label>
+        <!-- <input type='text' name='role' value=<?=$user['role']?>> -->
+        <input type='radio' name='role' value='mentor'>Mentor
+        <input type='radio' name='role' value='mentee'>Mentee
+
+        <br>
+        <label>Recruitment</label>
+        <input type='text' name='recruitment' value=<?=$user['recruitment']?>>
         <br>
         <!--
         Later: add more fields here.

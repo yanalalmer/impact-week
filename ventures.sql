@@ -1,7 +1,7 @@
 #
 # SQL Export
 # Created by Querious (201048)
-# Created: 1 December 2018 at 13:02:44 CET
+# Created: 3 December 2018 at 11:37:39 CET
 # Encoding: Unicode (UTF-8)
 #
 
@@ -33,6 +33,14 @@ CREATE TABLE `users` (
   `password` varchar(128) DEFAULT NULL,
   `city_id` int(11) DEFAULT NULL,
   `user_type` tinyint(4) NOT NULL DEFAULT '0',
+  `phone` varchar(13) DEFAULT NULL,
+  `birthdate` date DEFAULT NULL,
+  `bio` text,
+  `education` varchar(200) DEFAULT NULL,
+  `company` varchar(150) DEFAULT NULL,
+  `industry` varchar(200) DEFAULT NULL,
+  `role` varchar(64) DEFAULT NULL,
+  `recruitment` varchar(64) DEFAULT NULL,
   `created_at` datetime DEFAULT CURRENT_TIMESTAMP,
   `updated_at` datetime DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`),
@@ -50,10 +58,11 @@ CREATE TABLE `posts` (
   `updated_at` datetime DEFAULT CURRENT_TIMESTAMP,
   `allow_comments` tinyint(4) NOT NULL DEFAULT '1',
   `is_pinned` tinyint(4) NOT NULL DEFAULT '0',
+  `tags` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `user_id` (`user_id`),
   CONSTRAINT `posts_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=utf8;
 
 
 CREATE TABLE `comments` (
@@ -95,27 +104,30 @@ UNLOCK TABLES;
 
 LOCK TABLES `users` WRITE;
 ALTER TABLE `users` DISABLE KEYS;
-INSERT INTO `users` (`id`, `first_name`, `last_name`, `email`, `password`, `city_id`, `user_type`, `created_at`, `updated_at`) VALUES 
-	(1,'John','Doe','john@doe.com','admin123',1,0,'2018-11-29 16:50:13','2018-11-29 16:50:13'),
-	(2,'Jane','Doe','jane@doe.com','jane123',1,0,'2018-11-29 16:50:26','2018-11-29 16:50:26'),
-	(3,'Jack','O\'Hearts','jack@hearts.com','jack123',2,0,'2018-11-29 16:52:45','2018-11-29 16:52:45'),
-	(8,'Elvis2','Costello','test@email.com','$2y$10$H2l29b450QcFtz2pmfsyquke02kZIewPxYaEO9Pu3d04QVHh9orfO',NULL,0,'2018-11-29 17:08:03','2018-12-01 03:08:59'),
-	(10,'Newer','Account','sample@email.com','$2y$10$wUNC9fGzmaYmtnoORJFl.O5EiKXKJ25PVZCypKt7nS6.Up/DEEqYq',NULL,0,'2018-11-30 01:09:42','2018-11-30 01:23:35'),
-	(11,'Admin','McAdmin','admin@admin.com','$2y$10$ppGIAxu4WC0TD..Jywwg9eMPJA76GkHQptPeT4xikfcaMkuJthJIa',3,1,'2018-11-30 21:09:10','2018-11-30 21:09:10'),
-	(12,NULL,NULL,'no@name.com','$2y$10$9pktjP9vYSG82XN35rlc0OyE5EbnP9OTIDCBEf4E5nzllgkzk4zSm',NULL,0,'2018-12-01 12:23:07','2018-12-01 12:23:07');
+INSERT INTO `users` (`id`, `first_name`, `last_name`, `email`, `password`, `city_id`, `user_type`, `phone`, `birthdate`, `bio`, `education`, `company`, `industry`, `role`, `recruitment`, `created_at`, `updated_at`) VALUES 
+	(1,'John','Doe','john@doe.com','admin123',1,0,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'2018-11-29 16:50:13','2018-11-29 16:50:13'),
+	(2,'Jane','Doe','jane@doe.com','jane123',1,0,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'2018-11-29 16:50:26','2018-11-29 16:50:26'),
+	(3,'Jack','O\'Hearts','jack@hearts.com','jack123',2,0,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'2018-11-29 16:52:45','2018-11-29 16:52:45'),
+	(8,'Elvis','Costello','test@email.com','$2y$10$H2l29b450QcFtz2pmfsyquke02kZIewPxYaEO9Pu3d04QVHh9orfO',NULL,0,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'2018-11-29 17:08:03','2018-12-03 11:08:34'),
+	(10,'Newer','Account','sample@email.com','$2y$10$wUNC9fGzmaYmtnoORJFl.O5EiKXKJ25PVZCypKt7nS6.Up/DEEqYq',NULL,0,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'2018-11-30 01:09:42','2018-11-30 01:23:35'),
+	(11,'Admin','McAdmin','admin@admin.com','$2y$10$ppGIAxu4WC0TD..Jywwg9eMPJA76GkHQptPeT4xikfcaMkuJthJIa',3,1,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'2018-11-30 21:09:10','2018-11-30 21:09:10'),
+	(12,NULL,NULL,'no@name.com','$2y$10$9pktjP9vYSG82XN35rlc0OyE5EbnP9OTIDCBEf4E5nzllgkzk4zSm',NULL,0,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'2018-12-01 12:23:07','2018-12-01 12:23:07');
 ALTER TABLE `users` ENABLE KEYS;
 UNLOCK TABLES;
 
 
 LOCK TABLES `posts` WRITE;
 ALTER TABLE `posts` DISABLE KEYS;
-INSERT INTO `posts` (`id`, `title`, `content`, `user_id`, `created_at`, `updated_at`, `allow_comments`, `is_pinned`) VALUES 
-	(1,'title 1','Sample post',1,'2018-11-29 16:54:28','2018-11-29 16:54:28',1,1),
-	(2,'title 2','Another sample post',2,'2018-11-29 16:54:36','2018-11-29 16:54:36',1,0),
-	(11,'title 11','Test post33',8,'2018-12-01 04:35:25','2018-12-01 12:40:08',1,0),
-	(12,'title 12','Hope it works',11,'2018-12-01 04:38:58','2018-12-01 04:38:58',1,0),
-	(13,'title 13','I didn\'t fill out my profile.',12,'2018-12-01 12:23:24','2018-12-01 12:27:48',1,0),
-	(14,'title 14','dsasfdds',12,'2018-12-01 12:27:46','2018-12-01 12:27:46',1,0);
+INSERT INTO `posts` (`id`, `title`, `content`, `user_id`, `created_at`, `updated_at`, `allow_comments`, `is_pinned`, `tags`) VALUES 
+	(1,'title 1','Sample post',1,'2018-11-29 16:54:28','2018-11-29 16:54:28',1,1,'amsterdam networking'),
+	(2,'title 2','Another sample post',2,'2018-11-29 16:54:36','2018-11-29 16:54:36',1,0,'rotterdam event'),
+	(11,'title 11','Test post33',8,'2018-12-01 04:35:25','2018-12-01 12:40:08',1,0,'suggestion'),
+	(12,'title 12','Hope it works',11,'2018-12-01 04:38:58','2018-12-01 04:38:58',1,0,'suggestion'),
+	(13,'title 13','I didn\'t fill out my profile.',12,'2018-12-01 12:23:24','2018-12-01 12:27:48',1,0,'amsterdam event announcement'),
+	(14,'title 14','dsasfdds',12,'2018-12-01 12:27:46','2018-12-01 12:27:46',1,0,'education '),
+	(15,'Test ','Please work',11,'2018-12-01 13:07:33','2018-12-01 13:07:33',1,0,NULL),
+	(16,'Please no SQL injections','I\'m making posts so the database isn\'t empty but I don\'t have much to say right now.2',8,'2018-12-01 13:42:05','2018-12-01 14:21:53',1,0,NULL),
+	(18,'Test tags','yada yada yada yada ',8,'2018-12-01 21:17:50','2018-12-01 21:17:50',1,0,'Rotterdam social ');
 ALTER TABLE `posts` ENABLE KEYS;
 UNLOCK TABLES;
 

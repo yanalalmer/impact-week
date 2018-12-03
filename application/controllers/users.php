@@ -47,6 +47,7 @@ class Users extends CI_Controller {
   }
 
   public function edit_profile() {
+    $this->output->enable_profiler(TRUE);
     if( ! $this->input->post('submit_profile_edit')) {
       $this->session->profile_edit_status = TRUE;
       redirect('/users/profile/'.$this->session->user['id']);
@@ -55,11 +56,20 @@ class Users extends CI_Controller {
         'first_name' => $this->input->post('first_name', TRUE),
         'last_name' => $this->input->post('last_name', TRUE),
         'email' => $this->input->post('email', TRUE),
-        'id' => $this->session->user['id']
+        'phone' => $this->input->post('phone', TRUE),
+        'birthdate' => $this->input->post('birthdate', TRUE),
+        'bio' => $this->input->post('bio', TRUE),
+        'education' => $this->input->post('education', TRUE),
+        'company' => $this->input->post('company', TRUE),
+        'industry' => $this->input->post('industry', TRUE),
+        'role' => $this->input->post('role', TRUE),
+        'recruitment' => $this->input->post('recruitment', TRUE), 
+        'id' => $this->session->user['id'],
+
       );
       $this->user->update_profile($values);
       $this->session->unset_userdata('profile_edit_status');
-      redirect('/users/profile/'.$this->session->user['id']);
+      // redirect('/users/profile/'.$this->session->user['id']);
     }
   }
 }

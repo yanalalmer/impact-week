@@ -40,7 +40,10 @@
 		<li  id="menu-item-28" class="menu-item menu-item-type-post_type menu-item-object-page nav-item nav-item-28"><a href="https://femaleventures.nl/partners/" class="nav-link">Partners</a></li>
 		<li  id="menu-item-27" class="menu-item menu-item-type-post_type menu-item-object-page nav-item nav-item-27"><a href="https://femaleventures.nl/contact/" class="nav-link">Contact</a></li>
 		<li  id="menu-item-495" class="menu-item menu-item-type-post_type menu-item-object-product nav-item nav-item-495"><a href="https://femaleventures.nl/product/donations/" class="nav-link">Donate</a></li>
-		<li  id="menu-item-83" class="nav-btn menu-item menu-item-type-post_type menu-item-object-page nav-item nav-item-83"><a href="signup" class="nav-link">Join us !</a></li>
+		<li  id="menu-item-495" class="menu-item menu-item-type-post_type menu-item-object-product nav-item nav-item-495"><a href="" class="nav-link">Friends</a></li>
+		<li  id="menu-item-495" class="menu-item menu-item-type-post_type menu-item-object-product nav-item nav-item-495"><a href=<?="/users/profile/".$this->session->user['id']?> class="nav-link">My Profile</a></li>
+		<li  id="menu-item-83" class="nav-btn menu-item menu-item-type-post_type menu-item-object-page nav-item nav-item-83"><a href="/users/log_out" class="nav-link">LOG OUT !</a></li>
+		
 		<!-- <li  id="menu-item-84" class="nav-btn menu-item menu-item-type-post_type menu-item-object-page nav-item nav-item-84"><a href="signup" class="nav-link">Login</a></li> -->
 		</ul>  </div>
 		</div>
@@ -59,17 +62,32 @@
 	<li  class="menu-item menu-item-type-post_type menu-item-object-page nav-item nav-item-1506"><a class="dropdown-item" href="https://femaleventures.nl/newsletters/" class="nav-link"> Newsletters</a></li>
 	<li  class="menu-item menu-item-type-post_type menu-item-object-page nav-item nav-item-1492"><a class="dropdown-item" href="https://femaleventures.nl/blog/" class="nav-link"> Blog</a></li>
 	<li  class="menu-item menu-item-type-post_type menu-item-object-page nav-item nav-item-1522"><a class="dropdown-item" href="https://femaleventures.nl/vacancies/" class="nav-link"> Vacancies Team FV</a></li>
-		</ul>
-		</li>
-		<li  class="menu-item menu-item-type-post_type menu-item-object-page nav-item nav-item-28"><a href="https://femaleventures.nl/partners/" class="nav-link">Partners</a></li>
-		<li  class="menu-item menu-item-type-post_type menu-item-object-page nav-item nav-item-27"><a href="https://femaleventures.nl/contact/" class="nav-link">Contact</a></li>
-		<li  class="menu-item menu-item-type-post_type menu-item-object-product nav-item nav-item-495"><a href="https://femaleventures.nl/product/donations/" class="nav-link">Donate</a></li>
-		<li  class="nav-btn menu-item menu-item-type-post_type menu-item-object-page nav-item nav-item-83"><a href="https://femaleventures.nl/registration/" class="nav-link">Join us !</a></li>
-		<li  class="nav-btn menu-item menu-item-type-post_type menu-item-object-page nav-item nav-item-84"><a href="https://femaleventures.nl/login/" class="nav-link">Login</a></li>
-		</ul>
-</nav>
-  <div style="height:100px;" >
+</ul>
+</li>
+<li  class="menu-item menu-item-type-post_type menu-item-object-page nav-item nav-item-28"><a href="https://femaleventures.nl/partners/" class="nav-link">Partners</a></li>
+<li  class="menu-item menu-item-type-post_type menu-item-object-page nav-item nav-item-27"><a href="https://femaleventures.nl/contact/" class="nav-link">Contact</a></li>
+<li  class="menu-item menu-item-type-post_type menu-item-object-product nav-item nav-item-495"><a href="https://femaleventures.nl/product/donations/" class="nav-link">Donate</a></li>
+<li  class="nav-btn menu-item menu-item-type-post_type menu-item-object-page nav-item nav-item-83"><a href="" class="nav-link">Friends</a></li>
+<li  class="nav-btn menu-item menu-item-type-post_type menu-item-object-page nav-item nav-item-83"><a href="" class="nav-link">My Profile</a></li>
+<li  class="nav-btn menu-item menu-item-type-post_type menu-item-object-page nav-item nav-item-84"><a href="" class="nav-link">Logout!</a></li>
+</ul></nav>
+    <div id="header-image" style="background-image:url(https://femaleventures.nl/wp-content/uploads/2017/09/email-foto.jpg);">
+    <div id="intro-gradient"></div>
   </div>
+	<!-- <script>
+	window.onscroll = function() {myFunction()};
+
+	var navbar = document.getElementById("navbar");
+	var sticky = navbar.offsetTop;
+
+	function myFunction() {
+	  if (window.pageYOffset >= sticky) {
+	    navbar.classList.add("sticky")
+	  } else {
+	    navbar.classList.remove("sticky");
+	  }
+	}
+	</script> -->
 	<script>
 $(document).ready(function(){
     $(".primary").click((){
