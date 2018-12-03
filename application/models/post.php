@@ -44,7 +44,7 @@ class Post extends CI_Model {
   }
 
   public function update_post($values) {
-    $query = "UPDATE posts SET content = ?, updated_at = NOW() WHERE id = ?";
+    $query = "UPDATE posts SET title = ?, content = ?, updated_at = NOW() WHERE id = ?";
     $this->db->query($query, $values);
   }
 

@@ -25,6 +25,7 @@ class Posts extends CI_Controller {
   public function submit_edit_post() {
     $content = $this->input->post('edited_content_post', TRUE);
     $values = array(
+      'title' => $this->input->post('edited_title_post', TRUE),
       'content' => $content,
       'id' => $this->session->post_edit_id
     );
