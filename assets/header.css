@@ -1,22 +1,8 @@
-/*
-Theme Name:         Sage Starter Theme
-Theme URI:          https://roots.io/sage/
-Description:        Sage is a WordPress starter theme. <a href="https://github.com/roots/sage">Contribute on GitHub</a>
-Version:            8.5.2
-Author:             Roots
-Author URI:         https://roots.io/
-Text Domain:        sage
-
-License:            MIT License
-License URI:        http://opensource.org/licenses/MIT
-*/
-
 body{
 	padding-top: 120px;
 	font-family: 'Open Sans', sans-serif;
 
 }
-
 p, ul, ol, li{
 	font-family: 'Open Sans', sans-serif;
 	font-size: 15px;
@@ -34,39 +20,30 @@ p, ul, ol, li{
 	animation-delay: 0s;
 
 }
-
 .wow { visibility: hidden; }
-
 .handwriting{
 	font-family: 'Kaushan Script', cursive;
 	text-transform: none;
 }
-
 body.home, body.has-featured-image{
 	padding-top: 0;
 }
-
 nav{
 	left:auto;
 }
-
 .admin-bar nav{
 	margin-top: 32px;
 }
-
 nav.scrolled{
 	background-color:#fff;
 }
-
 .et_divi_builder #et_builder_outer_content .et_pb_row{
 	margin:0;
 }
-
 .um-notices-cta{
 	margin-top: 15px;
 	margin-bottom: 20px;
 }
-
 .has-featured-image nav:not(.is-sticky) .navbar-brand, .has-featured-image nav:not(.is-sticky) .nav-link{
 	color: #fff;
 }
@@ -81,7 +58,6 @@ a.nav-link{
 .is-sticky a.nav-link, .no-featured-image a.nav-link{
 	color: #fff;
 }
-
 a.nav-link:after{
 	border-right: 2px solid rgba(122, 193, 202, 0.51);
 	transform: rotate(9deg);
@@ -93,19 +69,15 @@ a.nav-link:after{
 	margin: -1px 0 0 7px;
 	border-left:none !important;
 }
-
 .dropdown-toggle::after{
 	border-top:none;
 }
-
 .navbar-nav li:last-child a:after{
 	border:none;
 }
-
 a.nav-link:hover{
 	color: #000;
 }
-
 .um-profile-edit-a{
 	background: #187580;
 	color: #fff;
@@ -115,7 +87,6 @@ a.nav-link:hover{
 	color: #fff !important;
 	font-size:14px;
 }
-
 .um-profile-edit i {
 	font-size: 16px !important;
 	margin-left: 8px;
@@ -306,10 +277,10 @@ a.nav-link:hover{
 
 
 }
-
+/*
 nav.is-sticky, .no-featured-image nav{
 	background:rgba(33, 116, 126, 0.55);
-}
+} */
 
 
 h1, h3, h3{
@@ -428,28 +399,6 @@ h3.et-fb-settings-heading:after, .et-fb-form h3:after, .form-allowed-tags{
 .col-3{
 	color:#20737d;
 }
-
-footer{
-	background-color: rgba(255, 255, 255, 0.2);
-	padding: 50px 0 80px;
-
-}
-
-footer .text-3 .fa{
-	color: #20737d;
-	position: absolute;
-	font-size: 20px;
-	margin-top:4px;
-}
-
-footer .text-3 a{
-	margin-left: 30px;
-}
-
-/*---------------*/
-/***** Chico *****/
-/*---------------*/
-
 figure.effect-chico{
 	overflow: hidden;
 	margin-top: 5px;
@@ -991,4 +940,3 @@ hr{
 	.toggle-nav {
 	    display: block;
 	}
-	
