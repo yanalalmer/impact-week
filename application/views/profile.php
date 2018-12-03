@@ -32,6 +32,7 @@
       <?php
     }
     ?>
+    <img src=<?=$user['picture']?> width=100px height=100px>
     <?php
     if ($this->session->profile_edit_status == FALSE ) {
       ?>

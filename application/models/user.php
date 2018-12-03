@@ -3,12 +3,12 @@
 class User extends CI_Model {
 
   public function get_user_by_email($email) {
-    return $this->db->query("SELECT users.id, first_name, last_name, email, city, password, user_type, phone, birthdate, bio, education, company, industry, role, recruitment
+    return $this->db->query("SELECT users.id, first_name, last_name, email, city, password, user_type, phone, birthdate, bio, education, company, industry, role, recruitment, picture
           FROM users WHERE email = ?", $email)->row_array();
   }
 
   public function get_user_by_id($id) {
-    return $this->db->query("SELECT users.id, first_name, last_name, email, city, password, user_type, phone, birthdate, bio, education, company, industry, role, recruitment
+    return $this->db->query("SELECT users.id, first_name, last_name, email, city, password, user_type, phone, birthdate, bio, education, company, industry, role, recruitment, picture
           FROM users WHERE users.id = ?", $id)->row_array();
   }
 
