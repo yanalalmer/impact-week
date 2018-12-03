@@ -102,7 +102,7 @@
             {
               ?>
               <form action="/posts/submit_edit_post" method='post'>
-                <input type="text" name="edited_title_post" value=<?=$post['title']?>/>
+                <input type="text" name="edited_title_post" value='<?=$post['title']?>'/>
                 <textarea name="edited_content_post" class="form-control " rows="3"><?=$post['content']?></textarea><br>
                 <input type='submit' value='submit' class="btn-sm btn-dark" />
               </form><br>

@@ -43,6 +43,7 @@
     {
       ?>
       <form action="/posts/submit_edit_post" method='post'>
+        <input type="text" name="edited_title_post" value='<?=$post['title']?>'/>
         <textarea name="edited_content_post"><?=$post['content']?></textarea>
         <input type='submit' value='submit' name='submit_in_thread' />
       </form>
