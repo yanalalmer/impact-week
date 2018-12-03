@@ -34,6 +34,30 @@ class User extends CI_Model {
     $this->db->query($query, $values);
   }
 
+  public function search_friends($keyword) {
+    // $query = "SELECT * FROM users WHERE first_name LIKE '%{$keyword}%' OR last_name LIKE '%{$keyword}%' OR city LIKE '%{$keyword}%' OR email LIKE '%{$keyword}%' OR education LIKE '%{$keyword}%' OR company LIKE '%{$keyword}%' OR industry LIKE '%{$keyword}%'";
+    // return $this->db->query($query)->result_array();
+    $keywords = explode(' ', $keyword);
+
+    //
+    // $query = "SELECT * FROM users WHERE first_name LIKE '%$keyword%'";
+    // return $this->db->query($query)->result_array();
+
+    $this->db->select('*');
+    $this->db->from('users');
+    if ($keyword !== '') {
+      $this->db->where_in('first_name', $keywords);
+      $this->db->or_where_in('last_name', $keywords);
+      $this->db->or_where_in('city', $keywords);
+      $this->db->or_where_in('education', $keywords);
+      $this->db->or_where_in('company', $keywords);
+      $this->db->or_where_in('industry', $keywords);
+      $this->db->or_where_in('role', $keywords);
+      $this->db->or_where_in('recruitment', $keywords);
+    }
+    return $this->db->get()->result_array();
+  }
+
 }
 
 ?>

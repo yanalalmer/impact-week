@@ -118,19 +118,15 @@
         <input type='text' name='industry' value=<?=$user['industry']?>>
         <br>
         <label>Role:</label>
-        <!-- <input type='text' name='role' value=<?=$user['role']?>> -->
         <input type='radio' name='role' value='mentor'>Mentor
         <input type='radio' name='role' value='mentee'>Mentee
 
         <br>
         <label>Recruitment:</label>
-        <!-- <input type='text' name='recruitment' value=<?=$user['recruitment']?>> -->
         <input type='radio' name='recruitment' value='Interested'>Interested
         <input type='radio' name='recruitment' value='Not interested'>Not interested
         <br>
-        <!--
-        Later: add more fields here.
-        -->
+
         <input type='submit' value='Submit' name='submit_profile_edit'>
       </form>
       <?php

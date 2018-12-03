@@ -27,6 +27,8 @@
           <form action="/users/log_out" method="post">
             <input type="submit" value="Log out" class="btn btn-danger"/>
           </form> --><br><br>
+
+          <a href='/users/female_friends/'>Female Friends</a>
           <form action="/posts/add" method="post">
             <div class="input-group-prepend">
               <span class="input-group-text" id="basic-addon3">Enter title here/</span>

@@ -72,5 +72,30 @@ class Users extends CI_Controller {
       redirect('/users/profile/'.$this->session->user['id']);
     }
   }
+
+  public function female_friends() {
+    $this->load->view('female_friends');
+  }
+
+  public function fetch_friends() {
+    $output = '';
+    $keyword = '';
+    if ($this->input->post('query')) {
+      $keyword = $this->input->post('query', TRUE);
+    }
+    $friends = $this->user->search_friends($keyword);
+
+    foreach ($friends as $friend) {
+      $output .= "<div class='col-sm-12 col-md-4 col-lg-3 text-center' style='border: 1px solid black'>
+        {$friend['first_name']} {$friend['last_name']} <br>
+        {$friend['city']} <br>
+        {$friend['industry']} <br>
+        {$friend['company']} <br>
+        {$friend['role']} <br>
+        {$friend['education']}
+      </div>";
+    }
+    echo $output;
+  }
 }
 ?>
