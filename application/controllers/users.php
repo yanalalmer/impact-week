@@ -4,9 +4,11 @@ class Users extends CI_Controller {
 
 
   public function index() {
+    $this->load->view('welcome');
+  }
+  public function signup() {
     $this->load->view('main');
   }
-
   public function login() {
     $email = $this->input->post('login_email', TRUE);
     $password = $this->input->post('login_password', TRUE);

@@ -1,0 +1,23 @@
+.mian{
+	background: url(Favicon.png);
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+    background-position: center;
+    background-color: white;
+    text-align: center;
+		height: 1000px;
+}
+
+.main-body
+{
+	vertical-align: top;
+	padding: 50px;
+	width: 600px;
+	text-align: center;
+	display: inline-block;
+}
+.top-pic{
+	
+	height: 100px;
+	width: 200px;
+}

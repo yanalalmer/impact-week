@@ -1,0 +1,17 @@
+.body
+{
+	background: url(Favicon.png);
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+    background-position: center; 
+    background-color: #AAE2DE;
+    text-align: center;
+}
+
+.main-body
+{
+	text-align: center;
+	display: inline-block;
+	padding: 130px;
+	margin-top: 60px;
+}
