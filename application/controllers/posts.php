@@ -8,6 +8,7 @@ class Posts extends CI_Controller {
   }
 
   public function add() {
+    // Todo: preserve line breaks when inserting content do DB
     $data = $this->input->post(null, TRUE);
     $this->post->add_post($data);
     redirect('/posts');
