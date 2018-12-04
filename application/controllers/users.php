@@ -86,16 +86,17 @@ class Users extends CI_Controller {
     $friends = $this->user->search_friends($keyword);
 
     foreach ($friends as $friend) {
-      $output .= "<div class='col-sm-12 col-md-4 col-lg-3 text-center' style='border: 1px solid black'>
-        <img src={$friend['picture']} width=100px height=100px/>
-        <a href='/users/profile/{$friend['id']}'>{$friend['first_name']} {$friend['last_name']}</a> <br>
+      $output .= "<div class='col-sm-12 col-md-4 col-lg-3 text-center' style='border:1px double Gainsboro; background-image:; border-radius:2px; margin:20px 30px 20px 30px;'>
+      <img src='/assets/email-foto.jpg' style='width:112%; margin-left:-15px;'/>
+        <img src={$friend['picture']} width=100px; height=100px; style='border-radius:100px; border:3px solid white; margin:-20px; position: relative; top: -25px;'/><br />
+        <a  href='/users/profile/{$friend['id']}'>{$friend['first_name']} {$friend['last_name']}</a><hr style='margin:8px;'/>
+
         {$friend['city']} <br>
         {$friend['industry']} <br>
         {$friend['company']} <br>
         {$friend['role']} <br>
-        {$friend['education']}
-        <button>Add friend</button>
-      </div>";
+        {$friend['education']}<br/>
+        <button class='btn' style='margin:10px;'> Add friend <i class='fas fa-user-friends'> </i></button>      </div>";
     }
     echo $output;
   }

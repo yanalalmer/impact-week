@@ -35,6 +35,7 @@ class User extends CI_Model {
   }
 
   public function search_friends($keyword) {
+
     $keywords = explode(' ', strtolower($keyword));
 
     $this->db->select('*');
@@ -48,6 +49,7 @@ class User extends CI_Model {
       $this->db->or_where_in('industry', $keywords);
       $this->db->or_where_in('role', $keywords);
       $this->db->or_where_in('recruitment', $keywords);
+
     } else if (in_array("and", $keywords)) {
       $key_list = '';
       foreach($keywords as $keyword) {

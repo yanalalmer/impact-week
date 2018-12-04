@@ -40,8 +40,9 @@
 		<li  id="menu-item-28" class="menu-item menu-item-type-post_type menu-item-object-page nav-item nav-item-28"><a href="https://femaleventures.nl/partners/" class="nav-link">Partners</a></li>
 		<li  id="menu-item-27" class="menu-item menu-item-type-post_type menu-item-object-page nav-item nav-item-27"><a href="https://femaleventures.nl/contact/" class="nav-link">Contact</a></li>
 		<li  id="menu-item-495" class="menu-item menu-item-type-post_type menu-item-object-product nav-item nav-item-495"><a href="https://femaleventures.nl/product/donations/" class="nav-link">Donate</a></li>
+		<li  id="menu-item-495" class="menu-item menu-item-type-post_type menu-item-object-product nav-item nav-item-495"><a href="/users/female_friends/" class="nav-link">Friends</a></li>
 		<li  id="menu-item-495" class="menu-item menu-item-type-post_type menu-item-object-product nav-item nav-item-495"><a href=<?="/users/profile/".$this->session->user['id']?> class="nav-link">My Profile</a></li>
-		<li  id="menu-item-83" class="nav-btn menu-item menu-item-type-post_type menu-item-object-page nav-item nav-item-83"><a href="/users/log_out" class="nav-link">LOG OUT !</a></li>
+		<li  id="menu-item-83" class="nav-btn menu-item menu-item-type-post_type menu-item-object-page nav-item nav-item-83"><a href="/users/log_out" class="nav-link">LOGOUT !</a></li>
 
 		<!-- <li  id="menu-item-84" class="nav-btn menu-item menu-item-type-post_type menu-item-object-page nav-item nav-item-84"><a href="signup" class="nav-link">Login</a></li> -->
 		</ul>  </div>

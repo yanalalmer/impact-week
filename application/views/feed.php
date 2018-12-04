@@ -18,7 +18,8 @@
     ?>
   </head>
   <body>
-    <?php $this->load->view('/header/header2.php') ?>
+    <?php $this->load->view('/header/header-feed.php') ?>
+
     <!-- <?php var_dump($this->session->all_userdata()) ?> -->
     <div class="container">
       <div class="row">

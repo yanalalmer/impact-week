@@ -67,7 +67,7 @@
                   class="form-control" type="text" placeholder="Password"
                   value="admin123"/>
                 </div>
-                <input type="submit" value="Sign Up" class="btn "/>
+                <input type="submit" value="Sign Up" class="btn"/>
               </div>
             </form>
           </div>
