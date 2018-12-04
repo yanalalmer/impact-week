@@ -3,11 +3,13 @@
 class User extends CI_Model {
 
   public function get_user_by_email($email) {
-    return $this->db->query("SELECT users.id, first_name, last_name, email, city, password, user_type FROM users LEFT JOIN cities ON users.city_id=cities.id WHERE email = ?", $email)->row_array();
+    return $this->db->query("SELECT users.id, first_name, last_name, email, city, password, user_type, phone, birthdate, bio, education, company, industry, role, recruitment, picture
+          FROM users WHERE email = ?", $email)->row_array();
   }
 
   public function get_user_by_id($id) {
-    return $this->db->query("SELECT users.id, first_name, last_name, email, city, password, user_type FROM users LEFT JOIN cities ON users.city_id=cities.id WHERE users.id = ?", $id)->row_array();
+    return $this->db->query("SELECT users.id, first_name, last_name, email, city, password, user_type, phone, birthdate, bio, education, company, industry, role, recruitment, picture
+          FROM users WHERE users.id = ?", $id)->row_array();
   }
 
   public function register($data) {
@@ -28,8 +30,26 @@ class User extends CI_Model {
   }
 
   public function update_profile($values) {
-    $query = "UPDATE users SET first_name = ?, last_name = ?, email = ?, updated_at = NOW() WHERE id = ?";
+    $query = "UPDATE users SET first_name = ?, last_name = ?, email = ?, phone = ?, birthdate = ?, bio = ?, education = ?, company = ?, industry = ?, role = ?, recruitment = ?, updated_at = NOW() WHERE id = ?";
     $this->db->query($query, $values);
+  }
+
+  public function search_friends($keyword) {
+    $keywords = explode(' ', $keyword);
+
+    $this->db->select('*');
+    $this->db->from('users');
+    if ($keyword !== '') {
+      $this->db->where_in('first_name', $keywords);
+      $this->db->or_where_in('last_name', $keywords);
+      $this->db->or_where_in('city', $keywords);
+      $this->db->or_where_in('education', $keywords);
+      $this->db->or_where_in('company', $keywords);
+      $this->db->or_where_in('industry', $keywords);
+      $this->db->or_where_in('role', $keywords);
+      $this->db->or_where_in('recruitment', $keywords);
+    }
+    return $this->db->get()->result_array();
   }
 
 }

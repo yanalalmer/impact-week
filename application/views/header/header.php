@@ -65,7 +65,7 @@
 <li  class="menu-item menu-item-type-post_type menu-item-object-page nav-item nav-item-27"><a href="https://femaleventures.nl/contact/" class="nav-link">Contact</a></li>
 <li  class="menu-item menu-item-type-post_type menu-item-object-product nav-item nav-item-495"><a href="https://femaleventures.nl/product/donations/" class="nav-link">Donate</a></li>
 <li  class="nav-btn menu-item menu-item-type-post_type menu-item-object-page nav-item nav-item-83"><a href="https://femaleventures.nl/registration/" class="nav-link">Join us !</a></li>
-<li  class="nav-btn menu-item menu-item-type-post_type menu-item-object-page nav-item nav-item-84"><a href="https://femaleventures.nl/login/" class="nav-link">Login</a></li>
+
 </ul></nav>
     <div id="header-image" style="background-image:url(https://femaleventures.nl/wp-content/uploads/2017/09/email-foto.jpg);">
     <div id="intro-gradient"></div>

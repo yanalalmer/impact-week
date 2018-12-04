@@ -25,6 +25,7 @@ class Posts extends CI_Controller {
   public function submit_edit_post() {
     $content = $this->input->post('edited_content_post', TRUE);
     $values = array(
+      'title' => $this->input->post('edited_title_post', TRUE),
       'content' => $content,
       'id' => $this->session->post_edit_id
     );
@@ -41,6 +42,13 @@ class Posts extends CI_Controller {
   public function delete_post() {
     $id = $this->input->post('post_id');
     $this->post->delete_post($id);
+    redirect('/posts');
+  }
+
+  public function toggle_pin() {
+    $post_id = $this->input->post('post_id', TRUE);
+    $is_pinned = $this->input->post('is_pinned', TRUE);
+    $this->post->toggle_pin($post_id, $is_pinned);
     redirect('/posts');
   }
 

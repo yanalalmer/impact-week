@@ -13,6 +13,7 @@ class Users extends CI_Controller {
     $email = $this->input->post('login_email', TRUE);
     $password = $this->input->post('login_password', TRUE);
     $this->session->user = $this->user->get_user_by_email($email);
+
     if ($this->session->user && password_verify($password, $this->session->user['password'])) {
       redirect('/feed');
     } else {
@@ -37,11 +38,16 @@ class Users extends CI_Controller {
   }
 
   public function profile($id) {
-    $this->session->user = $this->user->get_user_by_id($id);
-    $this->load->view('profile');
+    $posts = $this->post->get_posts_by_user($id);
+    $user = $this->user->get_user_by_id($id);
+    $this->load->view('profile', array(
+      'posts' => $posts,
+      'user' => $user
+    ));
   }
 
   public function edit_profile() {
+    $this->output->enable_profiler(TRUE);
     if( ! $this->input->post('submit_profile_edit')) {
       $this->session->profile_edit_status = TRUE;
       redirect('/users/profile/'.$this->session->user['id']);
@@ -50,12 +56,48 @@ class Users extends CI_Controller {
         'first_name' => $this->input->post('first_name', TRUE),
         'last_name' => $this->input->post('last_name', TRUE),
         'email' => $this->input->post('email', TRUE),
-        'id' => $this->session->user['id']
+        'phone' => $this->input->post('phone', TRUE),
+        'birthdate' => $this->input->post('birthdate', TRUE),
+        'bio' => $this->input->post('bio', TRUE),
+        'education' => $this->input->post('education', TRUE),
+        'company' => $this->input->post('company', TRUE),
+        'industry' => $this->input->post('industry', TRUE),
+        'role' => $this->input->post('role', TRUE),
+        'recruitment' => $this->input->post('recruitment', TRUE),
+        'id' => $this->session->user['id'],
+
       );
       $this->user->update_profile($values);
       $this->session->unset_userdata('profile_edit_status');
       redirect('/users/profile/'.$this->session->user['id']);
     }
+  }
+
+  public function female_friends() {
+    $this->load->view('female_friends');
+  }
+
+  public function fetch_friends() {
+    $output = '';
+    $keyword = '';
+    if ($this->input->post('query')) {
+      $keyword = $this->input->post('query', TRUE);
+    }
+    $friends = $this->user->search_friends($keyword);
+
+    foreach ($friends as $friend) {
+      $output .= "<div class='col-sm-12 col-md-4 col-lg-3 text-center' style='border:1px double Gainsboro; background-image:; border-radius:2px; margin:20px 30px 20px 30px;'>
+        <img src={$friend['picture']} width=100px; height=100px; style='border-radius:100px; border:3px double Gainsboro; margin:10px;'/><br />
+        <a  href='/users/profile/{$friend['id']}'>{$friend['first_name']} {$friend['last_name']}</a><hr style='margin:8px;'/>
+        {$friend['city']} <br>
+        {$friend['industry']} <br>
+        {$friend['company']} <br>
+        {$friend['role']} <br>
+        {$friend['education']}<br/>
+        <button class='btn' style='margin:10px;'> Add friend <i class='fas fa-user-friends'> </i></button>
+      </div>";
+    }
+    echo $output;
   }
 }
 ?>

@@ -50,7 +50,7 @@
                  <ul id="menu-footer-menu" class="menu">
                    <li id="menu-item-81" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-81"><a href="https://femaleventures.nl/terms-and-conditions/">Terms and Conditions</a></li>
                    <li id="menu-item-1339" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1339"><a href="https://femaleventures.nl/privacy-main/">Privacy</a></li>
-                   <li id="menu-item-242" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-242"><a href="https://femaleventures.nl/logout/">Logout</a></li>
+                   <li id="menu-item-242" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-242"><a href="">Logout</a></li>
                  </ul>
                </div>
              </div>
