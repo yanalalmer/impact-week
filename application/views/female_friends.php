@@ -13,7 +13,7 @@
     <div class='container'>
       <div class='row'>
         <div class='col-sm-12 col-md-8 offset-md-2 col-lg-8 offset-lg-2 text-center'>
-          <input type='text' id='searchbar' placeholder='search for friends'/>
+          <input type='text' id='searchbar' placeholder='search for friends' autocomplete="off"/>
 
         </div>
 
