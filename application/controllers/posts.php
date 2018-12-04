@@ -23,7 +23,7 @@ class Posts extends CI_Controller {
   }
 
   public function submit_edit_post() {
-    $content = $this->input->post('edited_content_post', TRUE);
+    $content = nl2br($this->input->post('edited_content_post', TRUE));
     $values = array(
       'title' => $this->input->post('edited_title_post', TRUE),
       'content' => $content,
