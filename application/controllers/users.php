@@ -90,13 +90,13 @@ class Users extends CI_Controller {
       <img src='/assets/email-foto.jpg' style='width:112%; margin-left:-15px;'/>
         <img src={$friend['picture']} width=100px; height=100px; style='border-radius:100px; border:3px solid white; margin:-20px; position: relative; top: -25px;'/><br />
         <a  href='/users/profile/{$friend['id']}'>{$friend['first_name']} {$friend['last_name']}</a><hr style='margin:8px;'/>
+
         {$friend['city']} <br>
         {$friend['industry']} <br>
         {$friend['company']} <br>
         {$friend['role']} <br>
         {$friend['education']}<br/>
-        <button class='btn' style='margin:10px;'> Add friend <i class='fas fa-user-friends'> </i></button>
-      </div>";
+        <button class='btn' style='margin:10px;'> Add friend <i class='fas fa-user-friends'> </i></button>      </div>";
     }
     echo $output;
   }
