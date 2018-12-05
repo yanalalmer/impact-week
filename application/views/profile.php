@@ -22,6 +22,8 @@
     <?php
     $user_friend_status = 0;
 
+    var_dump($requests);
+
     foreach ($friends as $friend) {
 
       if($friend['friend_id'] == $this->session->user['id']) {

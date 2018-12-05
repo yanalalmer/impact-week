@@ -41,10 +41,12 @@ class Users extends CI_Controller {
     $posts = $this->post->get_posts_by_user($id);
     $user = $this->user->get_user_by_id($id);
     $friends = $this->user->get_friends_by_user_id($id);
+    $requests = $this->user->get_friend_requests_by_user_id($id);
     $this->load->view('profile', array(
       'posts' => $posts,
       'user' => $user,
-      'friends' => $friends
+      'friends' => $friends,
+      'requests' => $requests
     ));
   }
 

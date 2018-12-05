@@ -89,8 +89,29 @@ class User extends CI_Model {
                     ON friends.from_id = u1.id
                     INNER JOIN users u2
                     ON friends.to_id = u2.id
-                    WHERE u1.id = ? OR u2.id = ?';
+                    WHERE (u1.id = ? OR u2.id = ?) AND status = 2';
     return $this->db->query($query, array($id, $id, $id, $id, $id, $id))->result_array();
+  }
+
+  public function get_friend_requests_by_user_id($id) {
+    $query = 'SELECT
+                    CASE
+                    WHEN friends.from_id = ? THEN friends.to_id
+                    WHEN friends.to_id = ? THEN friends.from_id
+                    END AS "friend_id",
+                    CASE
+                    WHEN friends.from_id = ? THEN CONCAT(u2.first_name, " ", u2.last_name)
+                    WHEN friends.to_id = ? THEN CONCAT(u1.first_name, " ", u1.last_name)
+                    END AS "friend_name",
+                    status
+                    FROM friends
+                    INNER JOIN users u1
+                    ON friends.from_id = u1.id
+                    INNER JOIN users u2
+                    ON friends.to_id = u2.id
+                    WHERE u2.id = ?';
+    return $this->db->query($query, array($id, $id, $id, $id, $id))->result_array();
+
   }
 
   public function add_friend_request($id_from, $id_to) {
