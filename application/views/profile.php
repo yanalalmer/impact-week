@@ -288,11 +288,23 @@ $(document).ready(function() {
     cancel_friend_request(from, id_to);
     $(this).hide();
     $("#accept"+from).hide();
+    $("#add"+from).show();
+
   });
 
   $(".delete").click(function() {
     var from = $(this).val();
     delete_friend(from, id_to);
+    $(this).hide();
+    $("#add"+from).show();
+  });
+
+  $('.add').click(function() {
+    var to = $(this).val();
+    add_friend(id_from, to, 0);
+    $(this).hide();
+    $("#cancel"+from).show();
+
   });
 
 });
