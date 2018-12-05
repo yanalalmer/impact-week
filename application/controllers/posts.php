@@ -8,6 +8,7 @@ class Posts extends CI_Controller {
   }
 
   public function add() {
+    // Todo: preserve line breaks when inserting content do DB
     $data = $this->input->post(null, TRUE);
     $this->post->add_post($data);
     redirect('/posts');
@@ -23,7 +24,7 @@ class Posts extends CI_Controller {
   }
 
   public function submit_edit_post() {
-    $content = $this->input->post('edited_content_post', TRUE);
+    $content = nl2br($this->input->post('edited_content_post', TRUE));
     $values = array(
       'title' => $this->input->post('edited_title_post', TRUE),
       'content' => $content,

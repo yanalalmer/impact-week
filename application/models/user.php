@@ -35,11 +35,12 @@ class User extends CI_Model {
   }
 
   public function search_friends($keyword) {
-    $keywords = explode(' ', $keyword);
+
+    $keywords = explode(' ', strtolower($keyword));
 
     $this->db->select('*');
     $this->db->from('users');
-    if ($keyword !== '') {
+    if ($keyword != '' and ! in_array('and', $keywords)) {
       $this->db->where_in('first_name', $keywords);
       $this->db->or_where_in('last_name', $keywords);
       $this->db->or_where_in('city', $keywords);
@@ -48,6 +49,19 @@ class User extends CI_Model {
       $this->db->or_where_in('industry', $keywords);
       $this->db->or_where_in('role', $keywords);
       $this->db->or_where_in('recruitment', $keywords);
+
+    } else if (in_array("and", $keywords)) {
+      $key_list = '';
+      foreach($keywords as $keyword) {
+        if ($keyword != 'and') {
+          $key_list .= "+{$keyword} ";
+        }
+      }
+      $query = "SELECT *
+                FROM users
+                WHERE MATCH (first_name, last_name, city, education, industry, company, role, recruitment)
+                AGAINST ('{$key_list}' IN BOOLEAN MODE)";
+      return $this->db->query($query)->result_array();
     }
     return $this->db->get()->result_array();
   }

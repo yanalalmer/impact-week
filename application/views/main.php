@@ -3,6 +3,7 @@
   <head>
     <meta charset="utf-8">
     <title>Female Ventures</title>
+    	<link rel="shortcut icon" href="/assets/favicon.png">
     <link rel="stylesheet"
     href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
     integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
@@ -10,7 +11,7 @@
     <link rel="stylesheet" type="text/css" href="/assets/registration.css"/>
   </head>
   <body>
-    <?php $this->load->view('header/header2.php') ?>
+    <?php $this->load->view('header/header-2.php') ?>
 
       <div class="page-header">
         <p class='top-t'>Join our community and become a Female Friend</p>
