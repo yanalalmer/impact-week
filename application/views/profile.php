@@ -4,6 +4,8 @@
     <meta charset="utf-8">
     <title>Your profile</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
     <style media="screen">
 
     </style>
@@ -18,14 +20,27 @@
   <body>
 
     <?php
+    $user_friend_status = 0;
+
     foreach ($friends as $friend) {
+
+      if($friend['friend_id'] == $this->session->user['id']) {
+        $user_friend_status = $friend['status'];
+      }
+
       if ($friend['status'] == 1) {
+
         echo $friend['friend_name']." sent you a friend request <br>";
       }
       else if ($friend['status'] == 2) {
         echo $friend['friend_name']." is your friend<br>";
       }
     }
+
+    echo "FRIEND STATUS: ".$user_friend_status;
+
+    var_dump($friends);
+
 
     ?>
 
@@ -145,11 +160,118 @@
       <?php
     }
     ?>
+    <?php
+    if ($this->session->user['id'] != $user['id'] && $user_friend_status == 0) {
+    ?>
+      <button id="add">Add friend!</button>
+      <button id="cancel" style="display:none">Cancel request</button>
+    <?php
+    } else if ($this->session->user['id'] != $user['id'] && $user_friend_status == 1) {
+      ?>
+      <button id="add" style="display:none">Add friend!</button>
+      <button id="cancel">Cancel request</button>
+      <?php
+    } else if ($user_friend_status == 1) {
+      echo "TODO";
+      ?>
+      <button id="accept">Accept friend request!</button>
+      <button id="cancel">Reject friend request.</button>
+      <button id="add" style="display:none">Add friend!</button>
+      <button id="delete" style="display:none">Friendship over. JS is my new best friend.</button>
 
-  <?php
-  var_dump($this->session->all_userdata());
+      <?php
+    } else if ($this->session->user['id'] != $user['id'] && $user_friend_status == 2) {
+      ?>
+      <button id="add" style="display:none">Add friend!</button>
+      <button id="delete">Friendship over. JS is my new best friend.</button>
+      <?php
+    }
     ?>
 
+    <?php
+
+
+
+    ?>
 
   </body>
 </html>
+
+<script>
+$(document).ready(function() {
+  var id_to = <?=$user['id']?>;
+  var id_from = <?=$this->session->user['id']?>;
+  var user_friend_status = <?=$user_friend_status?>;
+   console.log("User status starts at " + user_friend_status);
+  function add_friend(id_from, id_to, user_friend_status) {
+    $.ajax({
+      url:'<?= base_url()?>users/add_friend',
+      method:'POST',
+      data: {id_to:id_to, id_from:id_from, user_friend_status:user_friend_status},
+      success:function() {
+        $("#add").hide();
+        $("#cancel").show();
+      }
+    })
+  }
+
+  function cancel_friend_request(id_from, id_to) {
+    $.ajax({
+      url:'<?= base_url()?>users/delete_friend',
+      method:'POST',
+      data: {id_to:id_to, id_from:id_from},
+      success:function() {
+        $("#add").show();
+        $("#cancel").hide();
+      }
+    })
+  }
+
+  function delete_friend(id_from, id_to) {
+    $.ajax({
+      url:'<?= base_url()?>users/delete_friend',
+      method:'POST',
+      data: {id_to:id_to, id_from:id_from},
+      success:function() {
+        $("#add").show();
+        $("#delete").hide();
+      }
+    })
+  }
+
+  function accept_friend(id_from, id_to) {
+    $.ajax({
+      url:'<?= base_url()?>users/accept_friend',
+      method:'POST',
+      data: {id_to:id_to, id_from:id_from},
+      success:function() {
+        $("#accept").hide();
+        $("#cancel").hide();
+        $("#delete").show();
+      }
+    })
+  }
+
+
+  $('#add').click(function() {
+    console.log("we have " + user_friend_status);
+    add_friend(id_from, id_to, user_friend_status);
+    if (user_friend_status == 0) user_friend_status++;
+    console.log("we have " + user_friend_status);
+  });
+
+  $("#cancel").click(function() {
+    cancel_friend_request(id_from, id_to);
+    user_friend_status = 0;
+  });
+
+  $("#delete").click(function() {
+    delete_friend(id_from, id_to);
+    user_friend_status = 0;
+  });
+
+
+});
+
+
+</script>

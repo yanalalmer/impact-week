@@ -93,9 +93,21 @@ class User extends CI_Model {
     return $this->db->query($query, array($id, $id, $id, $id, $id, $id))->result_array();
   }
 
-  public function count_friends_by_user_id($id) {
-
+  public function add_friend_request($id_from, $id_to) {
+    $query = "INSERT INTO friends (from_id, to_id, status) VALUES (?, ?, 1)";
+    $this->db->query($query, array($id_from, $id_to));
   }
+
+  public function delete_friend($id_from, $id_to) {
+    $query = "DELETE FROM friends WHERE from_id IN ('{$id_from}', '{$id_to}') AND to_id IN ('{$id_from}', '{$id_to}')";
+    $this->db->query($query);
+  }
+
+  public function accept_friend($id_from, $id_to) {
+    $query = "UPDATE friends SET status = 2 WHERE from_id = ? AND to_id = ?";
+    $this->db->query($query, array($id_from, $id_to));
+  }
+
 
 }
 
