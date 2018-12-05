@@ -102,9 +102,9 @@
                   <?php
                 }
                 ?>
-                
+
             <hr>
-          </div> 
+          </div>
             <?php
           } //-----END OF TOGGLE EDIT-----
           else
@@ -119,16 +119,16 @@
             </form>
             Uploader: <p class="card-text text-info"><?= $comment['name']?></p>
             <hr>
-          </div>   
+          </div>
             <?php
           }
           ?>
- 
+
         <?php
       } //-----END OF PRINTING COMMENTS
         ?>
 
-      <div class="col-sm-8 offset-sm-2">  
+      <div class="col-sm-8 offset-sm-2">
         <form action="/comments/add_comment" method="post">
           <br><textarea name="content" class="form-control ">Your text here</textarea>
           <input type='hidden' name='post_id' value=<?=$post['id']?>><br>
