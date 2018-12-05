@@ -24,20 +24,31 @@
 
     var_dump($requests);
 
-    foreach ($friends as $friend) {
+    if ($user['id'] == $this->session->user['id']) {
+      foreach ($requests as $request) {
+        ?>
+        <button class="accept" id='accept<?=$request['friend_id']?>' value=<?=$request['friend_id']?>>Accept friend request!</button>
+        <button class="cancel" id='cancel<?=$request['friend_id']?>' value=<?=$request['friend_id']?>>Reject friend request.</button>
+        <button class="add" style="display:none" id='add<?=$request['friend_id']?>' value=<?=$request['friend_id']?>>Add friend!</button>
+        <button class="delete" style="display:none" id='delete<?=$request['friend_id']?>' value=<?=$request['friend_id']?>>Friendship over. JS is my new best friend.</button>
+        <?php
+        echo "friend id is: ".$request['friend_id']. ", name is ".$request['friend_name']."<br>";
 
-      if($friend['friend_id'] == $this->session->user['id']) {
-        $user_friend_status = $friend['status'];
-      }
-
-      if ($friend['status'] == 1) {
-
-        echo $friend['friend_name']." sent you a friend request <br>";
-      }
-      else if ($friend['status'] == 2) {
-        echo $friend['friend_name']." is your friend<br>";
       }
     }
+
+    foreach ($requests as $request) {
+      if ($request['friend_id'] == $this->session->user['id']) {
+        $user_friend_status = 1;
+      }
+    }
+
+    foreach ($friends as $friend) {
+      if($friend['friend_id'] == $this->session->user['id']) {
+        $user_friend_status = 2;
+      }
+    }
+
 
     echo "FRIEND STATUS: ".$user_friend_status;
 
@@ -271,6 +282,27 @@ $(document).ready(function() {
     delete_friend(id_from, id_to);
     user_friend_status = 0;
   });
+
+  $(".accept").click(function() {
+    var from = $(this).val();
+    accept_friend(from, id_to);
+    $(this).hide();
+    $("#cancel"+from).hide();
+    $("#delete"+from).show();
+  })
+
+  $(".cancel").click(function() {
+    var from = $(this).val();
+    cancel_friend_request(from, id_to);
+    $(this).hide();
+    $("#accept"+from).hide();
+  });
+
+  $(".delete").click(function() {
+    var from = $(this).val();
+    delete_friend(from, id_to);
+  });
+
 
 
 });

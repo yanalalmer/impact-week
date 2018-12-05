@@ -109,7 +109,7 @@ class User extends CI_Model {
                     ON friends.from_id = u1.id
                     INNER JOIN users u2
                     ON friends.to_id = u2.id
-                    WHERE u2.id = ?';
+                    WHERE u2.id = ? AND status = 1';
     return $this->db->query($query, array($id, $id, $id, $id, $id))->result_array();
 
   }
