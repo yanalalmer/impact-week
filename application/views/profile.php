@@ -6,11 +6,11 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
-    <style media="screen">
-
+    <style>
+      margin-top:20px;
     </style>
     <?php
-    var_dump($user);
+    // var_dump($user);
     if( ! $this->session->user) {
       redirect('/users');
       die();
@@ -22,8 +22,9 @@
     <?php
     $user_friend_status = 0;
 
-    var_dump($requests);
-
+    // var_dump($requests);
+    // DISPLAY RELEVANT BUTTONS FOR EACH OF YOUR INVITES
+    // TWO ARE HIDDEN AT THE START
     if ($user['id'] == $this->session->user['id']) {
       foreach ($requests as $request) {
         ?>
@@ -32,11 +33,12 @@
         <button class="add" style="display:none" id='add<?=$request['friend_id']?>' value=<?=$request['friend_id']?>>Add friend!</button>
         <button class="delete" style="display:none" id='delete<?=$request['friend_id']?>' value=<?=$request['friend_id']?>>Friendship over. JS is my new best friend.</button>
         <?php
+        // THIS ECHO IS JUST FOR TESTING
         echo "friend id is: ".$request['friend_id']. ", name is ".$request['friend_name']."<br>";
-
       }
     }
 
+    // THIS CODE CHECKS FRIEND STATUS BETWEEN THE LOGGED IN USER AND THE PROFILE
     foreach ($requests as $request) {
       if ($request['friend_id'] == $this->session->user['id']) {
         $user_friend_status = 1;
@@ -49,11 +51,9 @@
       }
     }
 
-
+    // FOR TESTING
     echo "FRIEND STATUS: ".$user_friend_status;
-
-    var_dump($friends);
-
+    // var_dump($friends);
 
     ?>
 
@@ -201,12 +201,6 @@
     }
     ?>
 
-    <?php
-
-
-
-    ?>
-
   </body>
 </html>
 
@@ -267,10 +261,8 @@ $(document).ready(function() {
 
 
   $('#add').click(function() {
-    console.log("we have " + user_friend_status);
     add_friend(id_from, id_to, user_friend_status);
     if (user_friend_status == 0) user_friend_status++;
-    console.log("we have " + user_friend_status);
   });
 
   $("#cancel").click(function() {
@@ -302,8 +294,6 @@ $(document).ready(function() {
     var from = $(this).val();
     delete_friend(from, id_to);
   });
-
-
 
 });
 
