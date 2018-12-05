@@ -81,8 +81,12 @@
         <div class='col-sm-12 col-md-8 offset-md-2 col-lg-8 offset-lg-2 text-center'>
           <p id="top-title">FEMALE FRIENDS</p>
           <input type='text' class="form-control" id='searchbar' placeholder='search for friends'/>
+          <!-- <button id="test">Click me!</button> -->
+
         </div>
       </div>
+
+
       <div class='row' id='results'>
         <!-- <div class='col-sm-12 col-md-12 col-lg-12' id="results">
         </div> -->
@@ -167,6 +171,23 @@ $(document).ready(function() {
       load_data();
     }
   })
+
+
+
+  $('#test2').click(function() {
+    alert("please work");
+    console.log("aaaa");
+  })
+
+  // function add_friend() {
+  //   $.ajax({
+  //     url:'<?= base_url()?>users/add_friend',
+  //     method:'POST',
+  //     data: { to_id:  }
+  //   })
+  // }
+  //
+  // $('#')
 
 })
 
