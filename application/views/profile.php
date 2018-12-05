@@ -19,6 +19,13 @@
   </head>
   <body>
 
+
+    <p>
+    FRIENDS: <?=count($friends)?>
+    </p>
+    <p>
+    REQUESTS: <?=count($requests)?>
+    </p>
     <?php
     $user_friend_status = 0;
 
