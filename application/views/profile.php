@@ -17,6 +17,18 @@
   </head>
   <body>
 
+    <?php
+    foreach ($friends as $friend) {
+      if ($friend['status'] == 1) {
+        echo $friend['friend_name']." sent you a friend request <br>";
+      }
+      else if ($friend['status'] == 2) {
+        echo $friend['friend_name']." is your friend<br>";
+      }
+    }
+
+    ?>
+
     <h4>User's posts</h4>
     <?php
     foreach($posts as $post) {
