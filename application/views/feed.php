@@ -100,9 +100,9 @@
             <h6 clas="text-monospaced"><?= $post['content'] ?></h6>
             <a href="<?='/thread/'.$post['id']?>" class="btn btn-sm"><?=$post['comment_count']." " ?>comments</a>
             Uploader: <p class="card-text text-info"><?php if($post['name']) {
-              echo $post['name'];
+              echo "<a href='/profile/{$post['user_id']}'>".$post['name']."</a>";
             } else {
-              echo $post['email'];
+              echo "<a href='/profile/{$post['user_id']}'>".$post['email']."</a>";
             }?></p>
 
             <?php

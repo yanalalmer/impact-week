@@ -40,9 +40,13 @@ class Users extends CI_Controller {
   public function profile($id) {
     $posts = $this->post->get_posts_by_user($id);
     $user = $this->user->get_user_by_id($id);
+    $friends = $this->user->get_friends_by_user_id($id);
+    $requests = $this->user->get_friend_requests_by_user_id($id);
     $this->load->view('profile', array(
       'posts' => $posts,
-      'user' => $user
+      'user' => $user,
+      'friends' => $friends,
+      'requests' => $requests
     ));
   }
 
@@ -95,8 +99,31 @@ class Users extends CI_Controller {
         {$friend['city']} <br>
         {$friend['education']}<br/> <br /> 
               </div>";
+
     }
     echo $output;
+  }
+
+  public function add_friend() {
+    $id_from = $this->input->post('id_from', TRUE);
+    $id_to = $this->input->post('id_to', TRUE);
+    $user_friend_status = $this->input->post('user_friend_status', TRUE);
+
+    if ($user_friend_status == 0 || $user_friend_status == NULL) {
+      $this->user->add_friend_request($id_from, $id_to);
+    }
+  }
+
+  public function delete_friend() {
+    $id_from = $this->input->post('id_from', TRUE);
+    $id_to = $this->input->post('id_to', TRUE);
+    $this->user->delete_friend($id_from, $id_to);
+  }
+
+  public function accept_friend() {
+    $id_from = $this->input->post('id_from', TRUE);
+    $id_to = $this->input->post('id_to', TRUE);
+    $this->user->accept_friend($id_from, $id_to);
   }
 }
 ?>
