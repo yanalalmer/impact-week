@@ -11,7 +11,7 @@
     <link rel="stylesheet" type="text/css" href="/assets/registration.css"/>
   </head>
   <body>
-    <?php $this->load->view('header/header-2.php') ?>
+    <?php $this->load->view('header/header-3.php') ?>
 
       <div class="page-header">
         <p class='top-t'>Join our community and become a Female Friend</p>

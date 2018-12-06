@@ -137,7 +137,7 @@
     } else
     {
       ?>
-      <form action="/users/edit_profile" method="post">
+      <form action="/users/edit_profile" method="post" enctype='multipart/form-data'">
         <label>First Name</label>
         <input type='text' name='first_name' value=<?=$user['first_name']?>>
         <br>
@@ -174,6 +174,9 @@
         <input type='radio' name='recruitment' value='Interested'>Interested
         <input type='radio' name='recruitment' value='Not interested'>Not interested
         <br>
+        <label>Profile picture</label>
+        <input type='file' name='picture'>
+        <br>
 
         <input type='submit' value='Submit' name='submit_profile_edit'>
       </form>
@@ -192,12 +195,12 @@
       <button id="cancel">Cancel request</button>
       <?php
     } else if ($user_friend_status == 1) {
-      echo "TODO";
+      // echo "TODO";
       ?>
-      <button id="accept">Accept friend request!</button>
+      /* <button id="accept">Accept friend request!</button>
       <button id="cancel">Reject friend request.</button>
       <button id="add" style="display:none">Add friend!</button>
-      <button id="delete" style="display:none">Friendship over. JS is my new best friend.</button>
+      <button id="delete" style="display:none">Friendship over. JS is my new best friend.</button> */
 
       <?php
     } else if ($this->session->user['id'] != $user['id'] && $user_friend_status == 2) {

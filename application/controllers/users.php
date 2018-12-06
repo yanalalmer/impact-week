@@ -56,6 +56,17 @@ class Users extends CI_Controller {
       $this->session->profile_edit_status = TRUE;
       redirect('/users/profile/'.$this->session->user['id']);
     } else {
+
+      $config['upload_path'] = './assets/';
+      $config['allowed_types']        = 'gif|jpg|png';
+      $config['max_size']             = 100;
+      $config['max_width']            = 1024;
+      $config['max_height']           = 768;
+
+      $this->load->library('upload', $config);
+      $this->upload->do_upload('picture');
+      $filename = '/assets/'.$this->upload->data('file_name');
+
       $values = array(
         'first_name' => $this->input->post('first_name', TRUE),
         'last_name' => $this->input->post('last_name', TRUE),
@@ -68,12 +79,12 @@ class Users extends CI_Controller {
         'industry' => $this->input->post('industry', TRUE),
         'role' => $this->input->post('role', TRUE),
         'recruitment' => $this->input->post('recruitment', TRUE),
-        'id' => $this->session->user['id'],
-
+        'picture' => $filename,
+        'id' => $this->session->user['id']
       );
       $this->user->update_profile($values);
       $this->session->unset_userdata('profile_edit_status');
-      redirect('/users/profile/'.$this->session->user['id']);
+      // redirect('/users/profile/'.$this->session->user['id']);
     }
   }
 
@@ -97,7 +108,7 @@ class Users extends CI_Controller {
         <a  href='/users/profile/{$friend['id']}'>{$friend['first_name']} {$friend['last_name']}</a><hr style='margin:8px;'/>
 
         {$friend['city']} <br>
-        {$friend['education']}<br/> <br /> 
+        {$friend['education']}<br/> <br />
               </div>";
 
     }
