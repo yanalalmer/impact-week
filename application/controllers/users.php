@@ -84,7 +84,7 @@ class Users extends CI_Controller {
       );
       $this->user->update_profile($values);
       $this->session->unset_userdata('profile_edit_status');
-      // redirect('/users/profile/'.$this->session->user['id']);
+      redirect('/users/profile/'.$this->session->user['id']);
     }
   }
 
