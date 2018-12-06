@@ -40,13 +40,9 @@ class Users extends CI_Controller {
   public function profile($id) {
     $posts = $this->post->get_posts_by_user($id);
     $user = $this->user->get_user_by_id($id);
-    $friends = $this->user->get_friends_by_user_id($id);
-    $requests = $this->user->get_friend_requests_by_user_id($id);
     $this->load->view('profile', array(
       'posts' => $posts,
-      'user' => $user,
-      'friends' => $friends,
-      'requests' => $requests
+      'user' => $user
     ));
   }
 
@@ -56,17 +52,6 @@ class Users extends CI_Controller {
       $this->session->profile_edit_status = TRUE;
       redirect('/users/profile/'.$this->session->user['id']);
     } else {
-
-      $config['upload_path'] = './assets/';
-      $config['allowed_types']        = 'gif|jpg|png';
-      $config['max_size']             = 100;
-      $config['max_width']            = 1024;
-      $config['max_height']           = 768;
-
-      $this->load->library('upload', $config);
-      $this->upload->do_upload('picture');
-      $filename = '/assets/'.$this->upload->data('file_name');
-
       $values = array(
         'first_name' => $this->input->post('first_name', TRUE),
         'last_name' => $this->input->post('last_name', TRUE),
@@ -79,8 +64,8 @@ class Users extends CI_Controller {
         'industry' => $this->input->post('industry', TRUE),
         'role' => $this->input->post('role', TRUE),
         'recruitment' => $this->input->post('recruitment', TRUE),
-        'picture' => $filename,
-        'id' => $this->session->user['id']
+        'id' => $this->session->user['id'],
+
       );
       $this->user->update_profile($values);
       $this->session->unset_userdata('profile_edit_status');
@@ -108,33 +93,10 @@ class Users extends CI_Controller {
         <a  href='/users/profile/{$friend['id']}'>{$friend['first_name']} {$friend['last_name']}</a><hr style='margin:8px;'/>
 
         {$friend['city']} <br>
-        {$friend['education']}<br/> <br />
+        {$friend['education']}<br/> <br /> 
               </div>";
-
     }
     echo $output;
-  }
-
-  public function add_friend() {
-    $id_from = $this->input->post('id_from', TRUE);
-    $id_to = $this->input->post('id_to', TRUE);
-    $user_friend_status = $this->input->post('user_friend_status', TRUE);
-
-    if ($user_friend_status == 0 || $user_friend_status == NULL) {
-      $this->user->add_friend_request($id_from, $id_to);
-    }
-  }
-
-  public function delete_friend() {
-    $id_from = $this->input->post('id_from', TRUE);
-    $id_to = $this->input->post('id_to', TRUE);
-    $this->user->delete_friend($id_from, $id_to);
-  }
-
-  public function accept_friend() {
-    $id_from = $this->input->post('id_from', TRUE);
-    $id_to = $this->input->post('id_to', TRUE);
-    $this->user->accept_friend($id_from, $id_to);
   }
 }
 ?>

@@ -23,13 +23,9 @@
       <div class='row'>
         <div class='col-sm-12 col-md-8 offset-md-2 col-lg-8 offset-lg-2 text-center'>
           <p id="top-title">FEMALE FRIENDS</p>
-          <input type='text' class="form-control" id='searchbar' placeholder='search for friends'/>
-          <!-- <button id="test">Click me!</button> -->
-
+          <input type='text' class="form-control fas fa-search" id='searchbar' name="search" placeholder=' search for friends'/>
         </div>
       </div>
-
-
       <div class='row' id='results'>
 
       </div>
@@ -107,6 +103,5 @@
             })
 
           })
-
 
     </script>

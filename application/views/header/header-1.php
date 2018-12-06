@@ -46,7 +46,7 @@
 		</span>
 	</div>
 	<div id="logo">
-		<img src='/assets/logo.png'>
+		<a href="welcome"><img src='/assets/logo.png'></a>
 	</div>
 
 
