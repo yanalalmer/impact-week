@@ -37,7 +37,7 @@
 		</div>
 		<div id="donate">
 		<i class="far fa-user" style="font-size: 2em;"></i><br>
-		<a class="logos-top" href="">My profile</a>
+		<a class="logos-top" href="/profile/<?=$this->session->user['id']?>">My profile</a>
 		</div>
 		<div id="users">
 		<i class="fas fa-users" style="font-size: 2em;"></i><br>
