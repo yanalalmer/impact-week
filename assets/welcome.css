@@ -1,23 +1,23 @@
-.mian{
-	background: url(Favicon.png);
-	background-repeat: no-repeat;
-	background-attachment: fixed;
-    background-position: center;
-    background-color: white;
-    text-align: center;
-		height: 1000px;
+.fab{
+	color: #22626B;
+	font-size:30px;
+	margin-left: 45px;
 }
-
-.main-body
-{
-	vertical-align: top;
-	padding: 50px;
-	width: 600px;
+.fot-box{
+	margin-left: 70px;
+}
+h4{
 	text-align: center;
-	display: inline-block;
 }
-.top-pic{
-	
-	height: 100px;
-	width: 200px;
+.contact-email{
+		margin-left: 45px;
+}
+.container{
+	margin: auto;
+}
+.slide{
+		width: 80%;
+		height: 50%;
+		margin: auto;
+		text-align: center;
 }
