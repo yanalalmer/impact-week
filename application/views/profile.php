@@ -4,6 +4,7 @@
     <meta charset="utf-8">
     <title>Your profile</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="/assets/profile.css"/>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
     <style>
@@ -18,7 +19,20 @@
     ?>
   </head>
   <body>
-
+  <header>
+          <?php $this->load->view('/header/header-3.php') ?>
+  </header>  
+ <div class="image">
+    <?php
+    if ($this->session->user['id'] == $user['id']) {
+      ?><br>
+      
+      <?php
+    }
+    ?>
+    <img src=<?=$user['picture']?> width=100px height=100px><br>
+    <a href="/users/edit_profile">Edit your profile</a>
+    </div>
 
     <p>
     FRIENDS: <?=count($friends)?>
@@ -62,8 +76,8 @@
     echo "FRIEND STATUS: ".$user_friend_status;
     // var_dump($friends);
 
-    ?>
-
+    ?><br><br><br>
+  <div class="titles">  
     <h4>User's posts</h4>
     <?php
     foreach($posts as $post) {
@@ -71,19 +85,14 @@
     }
      ?>
      <hr />
-
-    <?php
-    if ($this->session->user['id'] == $user['id']) {
-      ?>
-      <a href="/users/edit_profile">Edit your profile</a>
-      <?php
-    }
-    ?>
-    <img src=<?=$user['picture']?> width=100px height=100px>
+  </div>
+ 
+    <div class="edit">
     <?php
     if ($this->session->profile_edit_status == FALSE ) {
       ?>
-
+    </div>
+    <div class="info">
       <p>
         First name: <?=$user['first_name']?>
       </p>
@@ -132,54 +141,45 @@
         echo "Recruitment: <p>{$user['recruitment']}</p>";
       }
       ?>
-    </div>
+  </div>  
       <?php
     } else
     {
       ?>
+  <div class="bio">      
       <form action="/users/edit_profile" method="post" enctype='multipart/form-data'">
-        <label>First Name</label>
-        <input type='text' name='first_name' value=<?=$user['first_name']?>>
-        <br>
-        <label>Last name</label>
-        <input type='text' name='last_name' value=<?=$user['last_name']?>>
-        <br>
-        <label>Phone</label>
-        <input type='text' name='phone' value=<?=$user['phone']?>>
-        <br>
-        <label>Birthdate</label>
-        <input type='date' name='birthdate' value=<?=$user['birthdate']?>>
-        <br>
-        <label>Bio</label>
-        <textarea name='bio'><?=$user['bio']?></textarea>
-        <br />
-        <label>Email</label>
-        <input type='email' name='email' value=<?=$user['email']?>>
-        <br>
-        <label>Education</label>
-        <input type='text' name='education' value=<?=$user['education']?>>
-        <br>
-        <label>Company</label>
-        <input type='text' name='company' value=<?=$user['company']?>>
-        <br>
-        <label>Industry</label>
-        <input type='text' name='industry' value=<?=$user['industry']?>>
-        <br>
-        <label>Role:</label>
+        <label>First Name</label><br>
+        <input type='text' name='first_name' value=<?=$user['first_name']?>><br>
+        <label>Last name</label><br>
+        <input type='text' name='last_name' value=<?=$user['last_name']?>><br>
+        <label>Phone</label><br>
+        <input type='text' name='phone' value=<?=$user['phone']?>><br>
+        <label>Birthdate</label><br>
+        <input type='date' name='birthdate' value=<?=$user['birthdate']?>><br>
+        <label>Bio</label><br>
+        <textarea name='bio'><?=$user['bio']?></textarea><br>
+        <label>Email</label><br>
+        <input type='email' name='email' value=<?=$user['email']?>><br>
+        <label>Education</label><br>
+        <input type='text' name='education' value=<?=$user['education']?>><br>
+        <label>Company</label><br>
+        <input type='text' name='company' value=<?=$user['company']?>><br>
+        <label>Industry</label><br>
+        <input type='text' name='industry' value=<?=$user['industry']?>><br>
+        <label>Role:</label><br>
         <input type='radio' name='role' value='mentor'>Mentor
-        <input type='radio' name='role' value='mentee'>Mentee
-
-        <br>
-        <label>Recruitment:</label>
+        <input type='radio' name='role' value='mentee'>Mentee<br>
+        <label>Recruitment:</label><br>
         <input type='radio' name='recruitment' value='Interested'>Interested
         <input type='radio' name='recruitment' value='Not interested'>Not interested
         <br>
-        <label>Profile picture</label>
+        <label>Profile picture</label><br>
         <input type='file' name='picture'>
         <br>
 
         <input type='submit' value='Submit' name='submit_profile_edit'>
       </form>
+  </div>    
       <?php
     }
     ?>
@@ -209,9 +209,12 @@
       <button id="delete">Friendship over. JS is my new best friend.</button>
       <?php
     }
-    ?>
-
+    ?> 
+  <footer style="margin-top: 100px;">
+    <?php $this->load->view('footer/footer.php'); ?>
+  </footer>
   </body>
+
 </html>
 
 <script>

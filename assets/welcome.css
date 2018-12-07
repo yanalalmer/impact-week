@@ -21,3 +21,16 @@ h4{
 		margin: auto;
 		text-align: center;
 }
+.left{
+	width: 65%;
+	display: inline-block;
+}
+.right{
+	width: 30%;
+	display: inline-block;
+	vertical-align: top;
+}
+.mid-text{
+	color:rgb(45, 144, 94);
+}
+

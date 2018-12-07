@@ -10,6 +10,7 @@
     crossorigin="anonymous">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="/assets/sidebar.css"/>
+    
 
     <?php
     if ( ! $this->session->user) {
@@ -28,23 +29,11 @@
     <!-- Sidebar -->
       <nav id="sidebar">
         <div class="sidebar-header" style="text-align: center;">
-            <h4>Sidebar header</h4>
+            <h4>Intersting read</h4>
         </div>
 
         <ul class="list-unstyled components">
-            <li>
-                <ul>
-                    <li>
-                        <a href="#">Google</a>
-                    </li>
-                    <li>
-                        <a href="#">Home 2</a>
-                    </li>
-                    <li>
-                        <a href="#">Home 3</a>
-                    </li>
-                </ul>
-            </li>
+           
             <style type="text/css" media="screen">
   .gr_grid_container {
     /* customize grid container div here. eg: width: 500px; */

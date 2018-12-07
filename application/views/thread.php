@@ -74,7 +74,7 @@
                <div class="card col-sm-5 offset-sm-3 p-3 mb-1 bg-light text-dark border-dark ">
                  <?php
                  if ($this->session->comment_edit_id === NULL or $this->session->comment_edit_id !== $comment['id']) {?>
-                   <h5 clas="text-monospaced"><?echo $comment['content'];?></h5><br>
+                   <h5 clas="text-monospaced"><?php echo $comment['content'];?></h5><br>
                    Uploader: <p class="text-info"><?php if($comment['name']) {
                      echo $comment['name'];
                    } else {
@@ -140,4 +140,3 @@
 
    </body>
  </html>
-

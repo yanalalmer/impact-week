@@ -11,11 +11,15 @@
     <link rel="stylesheet" type="text/css" href="/assets/registration.css"/>
   </head>
   <body>
-    <?php $this->load->view('header/header-3.php') ?>
+    <?php $this->load->view('header/header-2.php') ?>
 
       <div class="page-header">
         <p class='top-t'>Join our community and become a Female Friend</p>
-
+        <div style="text-align: center;">
+         <img src="https://media.giphy.com/media/vRMnQKnFnFiFQtE2VQ/giphy.gif" width="100" style="display: inline-block;"> 
+        <img src="https://media0.giphy.com/media/8L0Pb4b92CFOhougNu/giphy.gif?cid=3640f6095c0941627055346867f136d4" width="100" style="display: inline-block;">
+        <img src="https://media0.giphy.com/media/46zriYYzSq7KCG82vF/giphy.gif?cid=3640f6095c09529a694a58534931a837" width="100" style="display: inline-block;">
+      </div>
       <div id="et-boc" class="et-boc">
   			<div id="et_builder_outer_content" class="et_builder_outer_content">
     			<div class="et_builder_inner_content et_pb_gutters3">
@@ -29,52 +33,18 @@
                 				</div>
               			</div> <!-- .et_pb_text -->
             			</div> <!-- .et_pb_column -->
-                  <div class="et_pb_column et_pb_column_1_2 et_pb_column_1    et_pb_css_mix_blend_mode_passthrough">
-            				<div class="et_pb_module et_pb_text et_pb_text_1 et_pb_bg_layout_light  et_pb_text_align_left">
-                				<div class="et_pb_text_inner top-title">
-                					<p class='top-t-middle'>Registered Friends have access to :</p>
-                            <ul class="maza">
-                              <li>Personal profile page</li>
-                              <li>Find other Friends</li>
-                              <li>Mentor/Mentee program</li>
-                              <li>Female Match recruitment program</li>
-                            </ul>
-                				</div>
-            		  	</div> <!-- .et_pb_text -->
-            			</div> <!-- .et_pb_column -->
-        			  </div> <!-- .et_pb_row -->
+          			  </div> <!-- .et_pb_row -->
     			  </div> <!-- .et_pb_section -->
         	</div>
   			</div>
   		</div>
       </div>
-            <hr>
+
+      <hr>
+
       <div class="container">
-        <div class="row">
-          <div class="col-sm-10 offset-sm-1 col-md-8 offset-md-2 col-lg-8 offset-lg-2 register">
-            <form action="/users/register" method="post" id="registrationForm">
-              <span class="warning_message"><?php echo $this->session->flashdata('registration_error')?></span>
-              <p><?php echo $this->session->flashdata('registration_status')?></p>
-              <div class="form-row">
-                <div class="form-group col-sm-6 col-md-6">
-                  <label for="email">Email</label>
-                  <input id="email" name="email"
-                  class="form-control" type="email" placeholder="email"
-                  value="test@email.com"/>
-                </div>
-                <div class="form-group col-sm-6 col-md-6">
-                  <label for="password">Password</label>
-                  <input id="password" name="password"
-                  class="form-control" type="text" placeholder="Password"
-                  value="admin123"/>
-                </div>
-                <input type="submit" value="Sign Up" class="btn"/>
-              </div>
-            </form>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-sm-10 offset-sm-1 col-md-8 offset-md-2 col-lg-8 offset-lg-2 login ">
+        <div class="row" style="display: inline-block;">
+          <div class="col-lg-12 offset-lg-2 login " style=" background-color: #22626B;">
             <form action="/users/login" method="post">
             <p class="warning_message"><?php echo $this->session->flashdata('login_error') ?></p>
             <div class="form-row">
@@ -91,11 +61,35 @@
                 value="admin123" required/>
               </div>
             </div>
-            <input type="submit" value="Log In" class="btn"/>
+            <button class="btn btn-lg  btn-block text-uppercase" type="submit" />Log In</button>
           </form>
         </div>
       </div>
-      </div>
+        <div class="row" style="display: inline-block; vertical-align: top;">
+          <div class="col-lg-12 offset-lg-3 register" style=" background-color: #22626B;">
+            <form action="/users/register" method="post" id="registrationForm">
+              <span class="warning_message"><?php echo $this->session->flashdata('registration_error')?></span>
+              <p><?php echo $this->session->flashdata('registration_status')?></p>
+              <div class="form-row">
+                <div class="form-group col-sm-6 col-md-6">
+                  <label for="email">Email</label>
+                  <input id="email" name="email"
+                  class="form-control" type="email" placeholder="email"
+                  value="test@email.com"/>
+                </div>
+                <div class="form-group col-sm-6 col-md-6">
+                  <label for="password">Password</label>
+                  <input id="password" name="password"
+                  class="form-control" type="text" placeholder="Password"
+                  value="admin123"/>
+                </div>
+                <button class="btn btn-lg  btn-block text-uppercase" type="submit"/>Signup</button>
+              </div>
+            </form>
+          </div>
+        </div>
+
+    </div>
     <hr>
   <?php $this->load->view('footer/footer.php'); ?>
   </body>
