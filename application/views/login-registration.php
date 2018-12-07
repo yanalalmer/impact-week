@@ -11,6 +11,8 @@
 			<?php $this->load->view('header/header.php') ?>
 		</header>
 		<div class="main-body">
+			<?=$this->session->flashdata('registration_error')?>
+			<?=$this->session->flashdata('registration_status')?>
 			<h3>Sign up now to join us!</h3>
 			<textarea cols="30" rows="1.5" placeholder="email adress"></textarea><br>
 			<textarea cols="30" rows="1.5" placeholder="Password"></textarea><br>
@@ -25,6 +27,6 @@
 		</div>
 		<footer>
 				<?php $this->load->view('footer/footer.php'); ?>
-		</footer>	
+		</footer>
 	</body>
 </html>

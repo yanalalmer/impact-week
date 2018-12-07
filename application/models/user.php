@@ -13,7 +13,7 @@ class User extends CI_Model {
   }
 
   public function register($data) {
-    // Later: move validation to controller and make it a separate method.
+
     $this->form_validation->set_data($data);
     $this->form_validation->set_rules('email', 'Email', 'required|trim|valid_email|is_unique[users.email]');
     $this->form_validation->set_rules('password', 'Password', 'required|trim|min_length[8]');
